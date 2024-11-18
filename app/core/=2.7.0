@@ -1,0 +1,15 @@
+Collecting pydantic
+  Downloading pydantic-2.9.2-py3-none-any.whl (434 kB)
+Collecting pydantic-settings==2.6.1
+  Using cached pydantic_settings-2.6.1-py3-none-any.whl (28 kB)
+Requirement already satisfied: typing-extensions>=4.6.1; python_version < "3.13" in /root/telecom-customer-service/venv/lib/python3.9/site-packages (from pydantic) (4.12.2)
+Collecting pydantic-core==2.23.4
+  Downloading pydantic_core-2.23.4-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+Requirement already satisfied: annotated-types>=0.6.0 in /root/telecom-customer-service/venv/lib/python3.9/site-packages (from pydantic) (0.7.0)
+Requirement already satisfied: python-dotenv>=0.21.0 in /root/telecom-customer-service/venv/lib/python3.9/site-packages (from pydantic-settings==2.6.1) (1.0.0)
+Installing collected packages: pydantic-core, pydantic, pydantic-settings
+  Attempting uninstall: pydantic-core
+    Found existing installation: pydantic-core 2.10.1
+    Uninstalling pydantic-core-2.10.1:
+      Successfully uninstalled pydantic-core-2.10.1
+Successfully installed pydantic-2.9.2 pydantic-core-2.23.4 pydantic-settings-2.6.1

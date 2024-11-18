@@ -1,0 +1,1397 @@
+2024-11-18 03:13:32,718 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:13:32,719 - INFO - telecom_bill_processor.py:384 - Extracted summary section: 66 chars
+2024-11-18 03:13:32,719 - DEBUG - telecom_bill_processor.py:385 - Sample content: סיכום החשבון שלך בהתייחס למנויים שברשותך 
+050-5148080 ,050-3060366...
+2024-11-18 03:13:32,720 - INFO - telecom_bill_processor.py:384 - Extracted fixed_charges section: 318 chars
+2024-11-18 03:13:32,721 - DEBUG - telecom_bill_processor.py:385 - Sample content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה...
+2024-11-18 03:13:32,721 - INFO - telecom_bill_processor.py:384 - Extracted packages section: 2126 chars
+2024-11-18 03:13:32,722 - DEBUG - telecom_bill_processor.py:385 - Sample content: שיעור שימוש בחבילות 
+שיעור וכמות השימוש המוצגים בטבלה זו מתייחסים לכמות הכלולה בחבילה 
+מספר מנויתאור חבילה יחידות הטבהשימוש בפועל 
+בתקופת 
+חשבון זהשיעור השימוש 
+בתקופת 
+חשבון זה
+0503060366 דקות שיחה 2...
+2024-11-18 03:13:32,722 - INFO - telecom_bill_processor.py:384 - Extracted usage section: 608 chars
+2024-11-18 03:13:32,722 - DEBUG - telecom_bill_processor.py:385 - Sample content: פירוט חיובים לפי מנוי 
+מספר פלאפון ושם מנויחיובים קבועיםחיובים משתנים
+חיובים חד פעמייםהטבות/ זיכוייםהחזריםרכישת  מוצריםסה"כ כולל מע"מהפרשי עיגול
+חיוב נוסף ללקוח 
+ 79.79 -0.01
+0.00 0.00 0.00 0.00 0.00 ...
+2024-11-18 03:13:32,723 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366']
+2024-11-18 03:13:32,725 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:13:32,725 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+2024-11-18 03:13:32,725 - DEBUG - telecom_bill_processor.py:437 - Context:  
+חיובים משתנים 
+0.002146610800
+חיוב על פי שימוש 
+סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+סכומים חייבים במע"מ 149.13
+ מע"מ 17% 25.35
+511076
+2024-11-18 03:13:32,728 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:13:32,735 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:13:32,735 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה
+2024-11-18 03:13:32,736 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-3060366, length: 2127
+2024-11-18 03:13:32,737 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-3060366: {}
+2024-11-18 03:13:32,737 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:13:32,738 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:13:32,739 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-5148080, length: 3804
+2024-11-18 03:13:32,741 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-5148080: {}
+2024-11-18 03:13:32,741 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:13:32,742 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:13:32,742 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-3060366", "050-5148080"], "usage": {"050-3060366": {"total_charges": 0}, "050-5148080": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:13:32,742 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-3060366': {'total_charges': 0}, '050-5148080': {'total_charges': 0}}
+2024-11-18 03:13:32,743 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:13:32,743 - INFO - telecom_bill_processor.py:384 - Extracted summary section: 66 chars
+2024-11-18 03:13:32,743 - DEBUG - telecom_bill_processor.py:385 - Sample content: סיכום החשבון שלך בהתייחס למנויים שברשותך 
+050-5148080 ,050-3060366...
+2024-11-18 03:13:32,743 - INFO - telecom_bill_processor.py:384 - Extracted fixed_charges section: 318 chars
+2024-11-18 03:13:32,744 - DEBUG - telecom_bill_processor.py:385 - Sample content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה...
+2024-11-18 03:13:32,744 - INFO - telecom_bill_processor.py:384 - Extracted packages section: 2126 chars
+2024-11-18 03:13:32,744 - DEBUG - telecom_bill_processor.py:385 - Sample content: שיעור שימוש בחבילות 
+שיעור וכמות השימוש המוצגים בטבלה זו מתייחסים לכמות הכלולה בחבילה 
+מספר מנויתאור חבילה יחידות הטבהשימוש בפועל 
+בתקופת 
+חשבון זהשיעור השימוש 
+בתקופת 
+חשבון זה
+0503060366 דקות שיחה 2...
+2024-11-18 03:13:32,744 - INFO - telecom_bill_processor.py:384 - Extracted usage section: 608 chars
+2024-11-18 03:13:32,744 - DEBUG - telecom_bill_processor.py:385 - Sample content: פירוט חיובים לפי מנוי 
+מספר פלאפון ושם מנויחיובים קבועיםחיובים משתנים
+חיובים חד פעמייםהטבות/ זיכוייםהחזריםרכישת  מוצריםסה"כ כולל מע"מהפרשי עיגול
+חיוב נוסף ללקוח 
+ 79.79 -0.01
+0.00 0.00 0.00 0.00 0.00 ...
+2024-11-18 03:13:32,745 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366']
+2024-11-18 03:13:32,745 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:13:32,745 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+2024-11-18 03:13:32,745 - DEBUG - telecom_bill_processor.py:437 - Context:  
+חיובים משתנים 
+0.002146610800
+חיוב על פי שימוש 
+סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+סכומים חייבים במע"מ 149.13
+ מע"מ 17% 25.35
+511076
+2024-11-18 03:13:32,745 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:13:32,747 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:13:32,747 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה
+2024-11-18 03:13:32,747 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-3060366, length: 2127
+2024-11-18 03:13:32,747 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-3060366: {}
+2024-11-18 03:13:32,747 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:13:32,748 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:13:32,748 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-5148080, length: 3804
+2024-11-18 03:13:32,748 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-5148080: {}
+2024-11-18 03:13:32,748 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:13:32,748 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:13:32,749 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-3060366", "050-5148080"], "usage": {"050-3060366": {"total_charges": 0}, "050-5148080": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:13:32,749 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-3060366': {'total_charges': 0}, '050-5148080': {'total_charges': 0}}
+2024-11-18 03:15:36,515 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:15:36,515 - INFO - telecom_bill_processor.py:384 - Extracted summary section: 66 chars
+2024-11-18 03:15:36,515 - DEBUG - telecom_bill_processor.py:385 - Sample content: סיכום החשבון שלך בהתייחס למנויים שברשותך 
+050-5148080 ,050-3060366...
+2024-11-18 03:15:36,516 - INFO - telecom_bill_processor.py:384 - Extracted fixed_charges section: 318 chars
+2024-11-18 03:15:36,516 - DEBUG - telecom_bill_processor.py:385 - Sample content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה...
+2024-11-18 03:15:36,516 - INFO - telecom_bill_processor.py:384 - Extracted packages section: 2126 chars
+2024-11-18 03:15:36,516 - DEBUG - telecom_bill_processor.py:385 - Sample content: שיעור שימוש בחבילות 
+שיעור וכמות השימוש המוצגים בטבלה זו מתייחסים לכמות הכלולה בחבילה 
+מספר מנויתאור חבילה יחידות הטבהשימוש בפועל 
+בתקופת 
+חשבון זהשיעור השימוש 
+בתקופת 
+חשבון זה
+0503060366 דקות שיחה 2...
+2024-11-18 03:15:36,517 - INFO - telecom_bill_processor.py:384 - Extracted usage section: 608 chars
+2024-11-18 03:15:36,517 - DEBUG - telecom_bill_processor.py:385 - Sample content: פירוט חיובים לפי מנוי 
+מספר פלאפון ושם מנויחיובים קבועיםחיובים משתנים
+חיובים חד פעמייםהטבות/ זיכוייםהחזריםרכישת  מוצריםסה"כ כולל מע"מהפרשי עיגול
+חיוב נוסף ללקוח 
+ 79.79 -0.01
+0.00 0.00 0.00 0.00 0.00 ...
+2024-11-18 03:15:36,518 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366']
+2024-11-18 03:15:36,518 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:15:36,519 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+2024-11-18 03:15:36,519 - DEBUG - telecom_bill_processor.py:437 - Context:  
+חיובים משתנים 
+0.002146610800
+חיוב על פי שימוש 
+סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+סכומים חייבים במע"מ 149.13
+ מע"מ 17% 25.35
+511076
+2024-11-18 03:15:36,521 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:15:36,525 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:15:36,525 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה
+2024-11-18 03:15:36,527 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-5148080, length: 3804
+2024-11-18 03:15:36,529 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-5148080: {}
+2024-11-18 03:15:36,529 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:15:36,529 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:15:36,532 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-3060366, length: 2127
+2024-11-18 03:15:36,533 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-3060366: {}
+2024-11-18 03:15:36,533 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:15:36,534 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:15:36,534 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:15:36,534 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:15:36,534 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:15:36,535 - INFO - telecom_bill_processor.py:384 - Extracted summary section: 66 chars
+2024-11-18 03:15:36,535 - DEBUG - telecom_bill_processor.py:385 - Sample content: סיכום החשבון שלך בהתייחס למנויים שברשותך 
+050-5148080 ,050-3060366...
+2024-11-18 03:15:36,535 - INFO - telecom_bill_processor.py:384 - Extracted fixed_charges section: 318 chars
+2024-11-18 03:15:36,535 - DEBUG - telecom_bill_processor.py:385 - Sample content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה...
+2024-11-18 03:15:36,535 - INFO - telecom_bill_processor.py:384 - Extracted packages section: 2126 chars
+2024-11-18 03:15:36,536 - DEBUG - telecom_bill_processor.py:385 - Sample content: שיעור שימוש בחבילות 
+שיעור וכמות השימוש המוצגים בטבלה זו מתייחסים לכמות הכלולה בחבילה 
+מספר מנויתאור חבילה יחידות הטבהשימוש בפועל 
+בתקופת 
+חשבון זהשיעור השימוש 
+בתקופת 
+חשבון זה
+0503060366 דקות שיחה 2...
+2024-11-18 03:15:36,536 - INFO - telecom_bill_processor.py:384 - Extracted usage section: 608 chars
+2024-11-18 03:15:36,536 - DEBUG - telecom_bill_processor.py:385 - Sample content: פירוט חיובים לפי מנוי 
+מספר פלאפון ושם מנויחיובים קבועיםחיובים משתנים
+חיובים חד פעמייםהטבות/ זיכוייםהחזריםרכישת  מוצריםסה"כ כולל מע"מהפרשי עיגול
+חיוב נוסף ללקוח 
+ 79.79 -0.01
+0.00 0.00 0.00 0.00 0.00 ...
+2024-11-18 03:15:36,536 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366']
+2024-11-18 03:15:36,536 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:15:36,537 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+2024-11-18 03:15:36,537 - DEBUG - telecom_bill_processor.py:437 - Context:  
+חיובים משתנים 
+0.002146610800
+חיוב על פי שימוש 
+סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+סכומים חייבים במע"מ 149.13
+ מע"מ 17% 25.35
+511076
+2024-11-18 03:15:36,537 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:15:36,538 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:15:36,539 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה
+2024-11-18 03:15:36,539 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-5148080, length: 3804
+2024-11-18 03:15:36,539 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-5148080: {}
+2024-11-18 03:15:36,539 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:15:36,539 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:15:36,540 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-3060366, length: 2127
+2024-11-18 03:15:36,540 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-3060366: {}
+2024-11-18 03:15:36,540 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:15:36,540 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:15:36,541 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:15:36,541 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:15:38,646 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:15:38,647 - INFO - telecom_bill_processor.py:384 - Extracted summary section: 66 chars
+2024-11-18 03:15:38,648 - DEBUG - telecom_bill_processor.py:385 - Sample content: סיכום החשבון שלך בהתייחס למנויים שברשותך 
+050-5148080 ,050-3060366...
+2024-11-18 03:15:38,649 - INFO - telecom_bill_processor.py:384 - Extracted fixed_charges section: 318 chars
+2024-11-18 03:15:38,649 - DEBUG - telecom_bill_processor.py:385 - Sample content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה...
+2024-11-18 03:15:38,650 - INFO - telecom_bill_processor.py:384 - Extracted packages section: 2126 chars
+2024-11-18 03:15:38,651 - DEBUG - telecom_bill_processor.py:385 - Sample content: שיעור שימוש בחבילות 
+שיעור וכמות השימוש המוצגים בטבלה זו מתייחסים לכמות הכלולה בחבילה 
+מספר מנויתאור חבילה יחידות הטבהשימוש בפועל 
+בתקופת 
+חשבון זהשיעור השימוש 
+בתקופת 
+חשבון זה
+0503060366 דקות שיחה 2...
+2024-11-18 03:15:38,652 - INFO - telecom_bill_processor.py:384 - Extracted usage section: 608 chars
+2024-11-18 03:15:38,652 - DEBUG - telecom_bill_processor.py:385 - Sample content: פירוט חיובים לפי מנוי 
+מספר פלאפון ושם מנויחיובים קבועיםחיובים משתנים
+חיובים חד פעמייםהטבות/ זיכוייםהחזריםרכישת  מוצריםסה"כ כולל מע"מהפרשי עיגול
+חיוב נוסף ללקוח 
+ 79.79 -0.01
+0.00 0.00 0.00 0.00 0.00 ...
+2024-11-18 03:15:38,653 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366']
+2024-11-18 03:15:38,654 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:15:38,654 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+2024-11-18 03:15:38,655 - DEBUG - telecom_bill_processor.py:437 - Context:  
+חיובים משתנים 
+0.002146610800
+חיוב על פי שימוש 
+סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+סכומים חייבים במע"מ 149.13
+ מע"מ 17% 25.35
+511076
+2024-11-18 03:15:38,655 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:15:38,659 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:15:38,659 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה
+2024-11-18 03:15:38,660 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-5148080, length: 3804
+2024-11-18 03:15:38,661 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-5148080: {}
+2024-11-18 03:15:38,661 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:15:38,662 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:15:38,663 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-3060366, length: 2127
+2024-11-18 03:15:38,664 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-3060366: {}
+2024-11-18 03:15:38,664 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:15:38,665 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:15:38,666 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:15:48,008 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:15:48,009 - INFO - telecom_bill_processor.py:384 - Extracted summary section: 66 chars
+2024-11-18 03:15:48,009 - DEBUG - telecom_bill_processor.py:385 - Sample content: סיכום החשבון שלך בהתייחס למנויים שברשותך 
+050-5148080 ,050-3060366...
+2024-11-18 03:15:48,009 - INFO - telecom_bill_processor.py:384 - Extracted fixed_charges section: 318 chars
+2024-11-18 03:15:48,009 - DEBUG - telecom_bill_processor.py:385 - Sample content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה...
+2024-11-18 03:15:48,010 - INFO - telecom_bill_processor.py:384 - Extracted packages section: 2126 chars
+2024-11-18 03:15:48,010 - DEBUG - telecom_bill_processor.py:385 - Sample content: שיעור שימוש בחבילות 
+שיעור וכמות השימוש המוצגים בטבלה זו מתייחסים לכמות הכלולה בחבילה 
+מספר מנויתאור חבילה יחידות הטבהשימוש בפועל 
+בתקופת 
+חשבון זהשיעור השימוש 
+בתקופת 
+חשבון זה
+0503060366 דקות שיחה 2...
+2024-11-18 03:15:48,010 - INFO - telecom_bill_processor.py:384 - Extracted usage section: 608 chars
+2024-11-18 03:15:48,010 - DEBUG - telecom_bill_processor.py:385 - Sample content: פירוט חיובים לפי מנוי 
+מספר פלאפון ושם מנויחיובים קבועיםחיובים משתנים
+חיובים חד פעמייםהטבות/ זיכוייםהחזריםרכישת  מוצריםסה"כ כולל מע"מהפרשי עיגול
+חיוב נוסף ללקוח 
+ 79.79 -0.01
+0.00 0.00 0.00 0.00 0.00 ...
+2024-11-18 03:15:48,011 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366']
+2024-11-18 03:15:48,011 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:15:48,011 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+2024-11-18 03:15:48,011 - DEBUG - telecom_bill_processor.py:437 - Context:  
+חיובים משתנים 
+0.002146610800
+חיוב על פי שימוש 
+סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+סכומים חייבים במע"מ 149.13
+ מע"מ 17% 25.35
+511076
+2024-11-18 03:15:48,012 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:15:48,013 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:15:48,013 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה
+2024-11-18 03:15:48,014 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-5148080, length: 3804
+2024-11-18 03:15:48,014 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-5148080: {}
+2024-11-18 03:15:48,014 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:15:48,014 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:15:48,015 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-3060366, length: 2127
+2024-11-18 03:15:48,015 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-3060366: {}
+2024-11-18 03:15:48,015 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:15:48,015 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:15:48,016 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:15:48,016 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:15:48,016 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:15:48,016 - INFO - telecom_bill_processor.py:384 - Extracted summary section: 66 chars
+2024-11-18 03:15:48,017 - DEBUG - telecom_bill_processor.py:385 - Sample content: סיכום החשבון שלך בהתייחס למנויים שברשותך 
+050-5148080 ,050-3060366...
+2024-11-18 03:15:48,017 - INFO - telecom_bill_processor.py:384 - Extracted fixed_charges section: 318 chars
+2024-11-18 03:15:48,017 - DEBUG - telecom_bill_processor.py:385 - Sample content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה...
+2024-11-18 03:15:48,018 - INFO - telecom_bill_processor.py:384 - Extracted packages section: 2126 chars
+2024-11-18 03:15:48,018 - DEBUG - telecom_bill_processor.py:385 - Sample content: שיעור שימוש בחבילות 
+שיעור וכמות השימוש המוצגים בטבלה זו מתייחסים לכמות הכלולה בחבילה 
+מספר מנויתאור חבילה יחידות הטבהשימוש בפועל 
+בתקופת 
+חשבון זהשיעור השימוש 
+בתקופת 
+חשבון זה
+0503060366 דקות שיחה 2...
+2024-11-18 03:15:48,018 - INFO - telecom_bill_processor.py:384 - Extracted usage section: 608 chars
+2024-11-18 03:15:48,018 - DEBUG - telecom_bill_processor.py:385 - Sample content: פירוט חיובים לפי מנוי 
+מספר פלאפון ושם מנויחיובים קבועיםחיובים משתנים
+חיובים חד פעמייםהטבות/ זיכוייםהחזריםרכישת  מוצריםסה"כ כולל מע"מהפרשי עיגול
+חיוב נוסף ללקוח 
+ 79.79 -0.01
+0.00 0.00 0.00 0.00 0.00 ...
+2024-11-18 03:15:48,018 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366']
+2024-11-18 03:15:48,019 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:15:48,019 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+2024-11-18 03:15:48,019 - DEBUG - telecom_bill_processor.py:437 - Context:  
+חיובים משתנים 
+0.002146610800
+חיוב על פי שימוש 
+סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+סכומים חייבים במע"מ 149.13
+ מע"מ 17% 25.35
+511076
+2024-11-18 03:15:48,019 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:15:48,020 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:15:48,020 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה
+2024-11-18 03:15:48,021 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-5148080, length: 3804
+2024-11-18 03:15:48,021 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-5148080: {}
+2024-11-18 03:15:48,021 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:15:48,021 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:15:48,022 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-3060366, length: 2127
+2024-11-18 03:15:48,022 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-3060366: {}
+2024-11-18 03:15:48,022 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:15:48,022 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:15:48,022 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:15:48,023 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:15:51,056 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:15:51,057 - INFO - telecom_bill_processor.py:384 - Extracted summary section: 66 chars
+2024-11-18 03:15:51,057 - DEBUG - telecom_bill_processor.py:385 - Sample content: סיכום החשבון שלך בהתייחס למנויים שברשותך 
+050-5148080 ,050-3060366...
+2024-11-18 03:15:51,058 - INFO - telecom_bill_processor.py:384 - Extracted fixed_charges section: 318 chars
+2024-11-18 03:15:51,059 - DEBUG - telecom_bill_processor.py:385 - Sample content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה...
+2024-11-18 03:15:51,060 - INFO - telecom_bill_processor.py:384 - Extracted packages section: 2126 chars
+2024-11-18 03:15:51,060 - DEBUG - telecom_bill_processor.py:385 - Sample content: שיעור שימוש בחבילות 
+שיעור וכמות השימוש המוצגים בטבלה זו מתייחסים לכמות הכלולה בחבילה 
+מספר מנויתאור חבילה יחידות הטבהשימוש בפועל 
+בתקופת 
+חשבון זהשיעור השימוש 
+בתקופת 
+חשבון זה
+0503060366 דקות שיחה 2...
+2024-11-18 03:15:51,061 - INFO - telecom_bill_processor.py:384 - Extracted usage section: 608 chars
+2024-11-18 03:15:51,062 - DEBUG - telecom_bill_processor.py:385 - Sample content: פירוט חיובים לפי מנוי 
+מספר פלאפון ושם מנויחיובים קבועיםחיובים משתנים
+חיובים חד פעמייםהטבות/ זיכוייםהחזריםרכישת  מוצריםסה"כ כולל מע"מהפרשי עיגול
+חיוב נוסף ללקוח 
+ 79.79 -0.01
+0.00 0.00 0.00 0.00 0.00 ...
+2024-11-18 03:15:51,062 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366']
+2024-11-18 03:15:51,062 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:15:51,062 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+2024-11-18 03:15:51,063 - DEBUG - telecom_bill_processor.py:437 - Context:  
+חיובים משתנים 
+0.002146610800
+חיוב על פי שימוש 
+סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+סכומים חייבים במע"מ 149.13
+ מע"מ 17% 25.35
+511076
+2024-11-18 03:15:51,063 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:15:51,066 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:15:51,066 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה
+2024-11-18 03:15:51,067 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-5148080, length: 3804
+2024-11-18 03:15:51,068 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-5148080: {}
+2024-11-18 03:15:51,068 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:15:51,069 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:15:51,070 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-3060366, length: 2127
+2024-11-18 03:15:51,071 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-3060366: {}
+2024-11-18 03:15:51,071 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:15:51,072 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:15:51,073 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:16:48,760 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:16:48,761 - INFO - telecom_bill_processor.py:384 - Extracted summary section: 66 chars
+2024-11-18 03:16:48,761 - DEBUG - telecom_bill_processor.py:385 - Sample content: סיכום החשבון שלך בהתייחס למנויים שברשותך 
+050-5148080 ,050-3060366...
+2024-11-18 03:16:48,761 - INFO - telecom_bill_processor.py:384 - Extracted fixed_charges section: 318 chars
+2024-11-18 03:16:48,762 - DEBUG - telecom_bill_processor.py:385 - Sample content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה...
+2024-11-18 03:16:48,762 - INFO - telecom_bill_processor.py:384 - Extracted packages section: 2126 chars
+2024-11-18 03:16:48,762 - DEBUG - telecom_bill_processor.py:385 - Sample content: שיעור שימוש בחבילות 
+שיעור וכמות השימוש המוצגים בטבלה זו מתייחסים לכמות הכלולה בחבילה 
+מספר מנויתאור חבילה יחידות הטבהשימוש בפועל 
+בתקופת 
+חשבון זהשיעור השימוש 
+בתקופת 
+חשבון זה
+0503060366 דקות שיחה 2...
+2024-11-18 03:16:48,762 - INFO - telecom_bill_processor.py:384 - Extracted usage section: 608 chars
+2024-11-18 03:16:48,762 - DEBUG - telecom_bill_processor.py:385 - Sample content: פירוט חיובים לפי מנוי 
+מספר פלאפון ושם מנויחיובים קבועיםחיובים משתנים
+חיובים חד פעמייםהטבות/ זיכוייםהחזריםרכישת  מוצריםסה"כ כולל מע"מהפרשי עיגול
+חיוב נוסף ללקוח 
+ 79.79 -0.01
+0.00 0.00 0.00 0.00 0.00 ...
+2024-11-18 03:16:48,763 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366']
+2024-11-18 03:16:48,763 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:16:48,763 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+2024-11-18 03:16:48,763 - DEBUG - telecom_bill_processor.py:437 - Context:  
+חיובים משתנים 
+0.002146610800
+חיוב על פי שימוש 
+סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+סכומים חייבים במע"מ 149.13
+ מע"מ 17% 25.35
+511076
+2024-11-18 03:16:48,763 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:16:48,765 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:16:48,765 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה
+2024-11-18 03:16:48,765 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-5148080, length: 3804
+2024-11-18 03:16:48,766 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-5148080: {}
+2024-11-18 03:16:48,766 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:16:48,766 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:16:48,766 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-3060366, length: 2127
+2024-11-18 03:16:48,766 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-3060366: {}
+2024-11-18 03:16:48,766 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:16:48,767 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:16:48,767 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:16:48,767 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:16:48,768 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:16:48,768 - INFO - telecom_bill_processor.py:384 - Extracted summary section: 66 chars
+2024-11-18 03:16:48,768 - DEBUG - telecom_bill_processor.py:385 - Sample content: סיכום החשבון שלך בהתייחס למנויים שברשותך 
+050-5148080 ,050-3060366...
+2024-11-18 03:16:48,768 - INFO - telecom_bill_processor.py:384 - Extracted fixed_charges section: 318 chars
+2024-11-18 03:16:48,769 - DEBUG - telecom_bill_processor.py:385 - Sample content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה...
+2024-11-18 03:16:48,769 - INFO - telecom_bill_processor.py:384 - Extracted packages section: 2126 chars
+2024-11-18 03:16:48,769 - DEBUG - telecom_bill_processor.py:385 - Sample content: שיעור שימוש בחבילות 
+שיעור וכמות השימוש המוצגים בטבלה זו מתייחסים לכמות הכלולה בחבילה 
+מספר מנויתאור חבילה יחידות הטבהשימוש בפועל 
+בתקופת 
+חשבון זהשיעור השימוש 
+בתקופת 
+חשבון זה
+0503060366 דקות שיחה 2...
+2024-11-18 03:16:48,770 - INFO - telecom_bill_processor.py:384 - Extracted usage section: 608 chars
+2024-11-18 03:16:48,770 - DEBUG - telecom_bill_processor.py:385 - Sample content: פירוט חיובים לפי מנוי 
+מספר פלאפון ושם מנויחיובים קבועיםחיובים משתנים
+חיובים חד פעמייםהטבות/ זיכוייםהחזריםרכישת  מוצריםסה"כ כולל מע"מהפרשי עיגול
+חיוב נוסף ללקוח 
+ 79.79 -0.01
+0.00 0.00 0.00 0.00 0.00 ...
+2024-11-18 03:16:48,770 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366']
+2024-11-18 03:16:48,770 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:16:48,771 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+2024-11-18 03:16:48,771 - DEBUG - telecom_bill_processor.py:437 - Context:  
+חיובים משתנים 
+0.002146610800
+חיוב על פי שימוש 
+סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+סכומים חייבים במע"מ 149.13
+ מע"מ 17% 25.35
+511076
+2024-11-18 03:16:48,771 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:16:48,772 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:16:48,772 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה
+2024-11-18 03:16:48,773 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-5148080, length: 3804
+2024-11-18 03:16:48,773 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-5148080: {}
+2024-11-18 03:16:48,773 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:16:48,773 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:16:48,774 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-3060366, length: 2127
+2024-11-18 03:16:48,774 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-3060366: {}
+2024-11-18 03:16:48,774 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:16:48,774 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:16:48,775 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:16:48,775 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:16:51,268 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:16:51,268 - INFO - telecom_bill_processor.py:384 - Extracted summary section: 66 chars
+2024-11-18 03:16:51,269 - DEBUG - telecom_bill_processor.py:385 - Sample content: סיכום החשבון שלך בהתייחס למנויים שברשותך 
+050-5148080 ,050-3060366...
+2024-11-18 03:16:51,269 - INFO - telecom_bill_processor.py:384 - Extracted fixed_charges section: 318 chars
+2024-11-18 03:16:51,270 - DEBUG - telecom_bill_processor.py:385 - Sample content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה...
+2024-11-18 03:16:51,270 - INFO - telecom_bill_processor.py:384 - Extracted packages section: 2126 chars
+2024-11-18 03:16:51,270 - DEBUG - telecom_bill_processor.py:385 - Sample content: שיעור שימוש בחבילות 
+שיעור וכמות השימוש המוצגים בטבלה זו מתייחסים לכמות הכלולה בחבילה 
+מספר מנויתאור חבילה יחידות הטבהשימוש בפועל 
+בתקופת 
+חשבון זהשיעור השימוש 
+בתקופת 
+חשבון זה
+0503060366 דקות שיחה 2...
+2024-11-18 03:16:51,270 - INFO - telecom_bill_processor.py:384 - Extracted usage section: 608 chars
+2024-11-18 03:16:51,271 - DEBUG - telecom_bill_processor.py:385 - Sample content: פירוט חיובים לפי מנוי 
+מספר פלאפון ושם מנויחיובים קבועיםחיובים משתנים
+חיובים חד פעמייםהטבות/ זיכוייםהחזריםרכישת  מוצריםסה"כ כולל מע"מהפרשי עיגול
+חיוב נוסף ללקוח 
+ 79.79 -0.01
+0.00 0.00 0.00 0.00 0.00 ...
+2024-11-18 03:16:51,271 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366']
+2024-11-18 03:16:51,271 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:16:51,271 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+2024-11-18 03:16:51,271 - DEBUG - telecom_bill_processor.py:437 - Context:  
+חיובים משתנים 
+0.002146610800
+חיוב על פי שימוש 
+סה"כ חשבון נוכחי כולל מע"מ  ₪174.48
+סכומים חייבים במע"מ 149.13
+ מע"מ 17% 25.35
+511076
+2024-11-18 03:16:51,272 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:16:51,273 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:16:51,273 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: חיובים קבועים למנוי 5
+תיאור
+תעריףסה"כ
+לתשלום
+סה"כ לתשלום כולל מע"מ 3
+(תשלום חודשי קבוע )דמי מנוי 
+59.89
+59.891
+.12
+100GB חבילת גלישה בנפח 
+0.00
+0.001
+.22
+גלישה באפליקציות חברתיות 
+0.00
+0.001
+.32
+פתיחה
+2024-11-18 03:16:51,274 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-5148080, length: 3804
+2024-11-18 03:16:51,274 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-5148080: {}
+2024-11-18 03:16:51,274 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:16:51,275 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:16:51,275 - DEBUG - telecom_bill_processor.py:253 - Found package section for 050-3060366, length: 2127
+2024-11-18 03:16:51,275 - DEBUG - telecom_bill_processor.py:222 - Found package details for 050-3060366: {}
+2024-11-18 03:16:51,275 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:16:51,276 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:16:51,276 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:30:51,114 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:30:51,114 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:30:51,115 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:30:51,115 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:30:51,115 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:30:51,117 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:30:51,118 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:30:51,118 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:30:51,119 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:30:51,120 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:30:51,120 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:30:51,120 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:30:51,121 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:30:51,122 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:30:51,123 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:30:51,123 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:30:51,123 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:30:51,124 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:30:51,124 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:30:51,124 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:30:51,124 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:30:51,124 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:30:51,125 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:30:51,125 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:30:51,125 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:30:51,125 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:30:51,125 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:30:51,125 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:30:51,125 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:30:51,126 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:30:51,126 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:30:51,126 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:30:51,126 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:30:51,126 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:30:51,126 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:30:51,127 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:30:54,738 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:30:54,738 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:30:54,739 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:30:54,740 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:30:54,741 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:30:54,741 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:30:54,742 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:30:54,743 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:30:54,743 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:30:54,744 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:30:54,744 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:30:54,745 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:30:54,746 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:30:54,746 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:30:54,747 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:30:54,748 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:30:54,749 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:32:03,712 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:32:03,712 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:32:03,713 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:32:03,713 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:32:03,713 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:32:03,714 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:32:03,714 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:32:03,714 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:32:03,714 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:32:03,714 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:32:03,715 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:32:03,715 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:32:03,715 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:32:03,715 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:32:03,716 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:32:03,716 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:32:03,716 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:32:03,716 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:32:03,717 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:32:03,717 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:32:03,718 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:32:03,718 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:32:03,718 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:32:03,719 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:32:03,719 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:32:03,719 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:32:03,719 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:32:03,720 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:32:03,720 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:32:03,720 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:32:03,721 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:32:03,721 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:32:03,722 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:32:03,722 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:32:03,722 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:32:03,723 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:32:07,026 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:32:07,027 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:32:07,028 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:32:07,028 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:32:07,029 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:32:07,030 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:32:07,030 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:32:07,031 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:32:07,031 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:32:07,032 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:32:07,032 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:32:07,033 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:32:07,034 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:32:07,034 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:32:07,035 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:32:07,036 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:32:07,037 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:32:20,641 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:32:20,641 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:32:20,641 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:32:20,642 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:32:20,642 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:32:20,643 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:32:20,643 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:32:20,643 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:32:20,644 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:32:20,645 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:32:20,645 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:32:20,645 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:32:20,646 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:32:20,646 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:32:20,647 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:32:20,647 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:32:20,647 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:32:20,648 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:32:20,648 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:32:20,649 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:32:20,649 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:32:20,649 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:32:20,649 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:32:20,650 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:32:20,650 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:32:20,650 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:32:20,650 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:32:20,650 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:32:20,651 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:32:20,651 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:32:20,651 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:32:20,651 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:32:20,652 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:32:20,652 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:32:20,652 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:32:20,653 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:32:22,438 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:32:22,439 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:32:22,440 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:32:22,440 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:32:22,441 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:32:22,442 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:32:22,443 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:32:22,443 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:32:22,444 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:32:22,444 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:32:22,445 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:32:22,446 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:32:22,446 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:32:22,447 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:32:22,448 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:32:22,448 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:32:22,449 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:34:42,028 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:34:42,028 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:34:42,029 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:34:42,029 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:34:42,029 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:34:42,030 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:34:42,031 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:34:42,031 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:34:42,032 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:34:42,033 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:34:42,033 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:34:42,033 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:34:42,035 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:34:42,035 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:34:42,036 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:34:42,037 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:34:42,037 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-3060366", "050-5148080"], "usage": {"050-3060366": {"total_charges": 0}, "050-5148080": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:34:42,037 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-3060366': {'total_charges': 0}, '050-5148080': {'total_charges': 0}}
+2024-11-18 03:34:42,037 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:34:42,038 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:34:42,038 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:34:42,038 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:34:42,038 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:34:42,039 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:34:42,039 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:34:42,039 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:34:42,039 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:34:42,039 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:34:42,040 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:34:42,040 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:34:42,040 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:34:42,040 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:34:42,041 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:34:42,041 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:34:42,041 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-3060366", "050-5148080"], "usage": {"050-3060366": {"total_charges": 0}, "050-5148080": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:34:42,041 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-3060366': {'total_charges': 0}, '050-5148080': {'total_charges': 0}}
+2024-11-18 03:34:44,764 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:34:44,765 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:34:44,766 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:34:44,766 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:34:44,767 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:34:44,767 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:34:44,768 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:34:44,768 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:34:44,769 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:34:44,769 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:34:44,770 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:34:44,770 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:34:44,771 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:34:44,771 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:34:44,772 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:34:44,772 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:34:44,773 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-3060366", "050-5148080"], "usage": {"050-3060366": {"total_charges": 0}, "050-5148080": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:35:09,596 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:35:09,597 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:35:09,597 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:35:09,597 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:35:09,598 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:35:09,599 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:35:09,600 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:35:09,600 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:35:09,600 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:35:09,601 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:35:09,602 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:35:09,602 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:35:09,603 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:35:09,603 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:35:09,605 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:35:09,605 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:35:09,605 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:35:09,606 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:35:09,606 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:35:09,606 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:35:09,606 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:35:09,607 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:35:09,607 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:35:09,607 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:35:09,608 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:35:09,608 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:35:09,608 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:35:09,608 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:35:09,608 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:35:09,609 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:35:09,609 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:35:09,609 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:35:09,609 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:35:09,610 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:35:09,610 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:35:09,610 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:35:13,431 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:35:13,432 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:35:13,433 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:35:13,433 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:35:13,434 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:35:13,435 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:35:13,435 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:35:13,436 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:35:13,436 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:35:13,436 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:35:13,437 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:35:13,437 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:35:13,438 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:35:13,439 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:35:13,440 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:35:13,440 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:35:13,441 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:40:48,368 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:40:48,368 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:40:48,368 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:40:48,369 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:40:48,369 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:40:48,370 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:40:48,371 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:40:48,371 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:40:48,372 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:40:48,373 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:40:48,373 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:40:48,374 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:40:48,375 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:40:48,375 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:40:48,377 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:40:48,377 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:40:48,377 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:40:48,378 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:40:48,378 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:40:48,378 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:40:48,379 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:40:48,379 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:40:48,379 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:40:48,379 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:40:48,379 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:40:48,379 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:40:48,380 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:40:48,380 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:40:48,380 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:40:48,380 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:40:48,380 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:40:48,381 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:40:48,381 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:40:48,381 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:40:48,381 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:40:48,382 - INFO - telecom_bill_processor.py:797 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:40:51,120 - INFO - telecom_bill_processor.py:78 - Starting bill processing...
+2024-11-18 03:40:51,121 - WARNING - telecom_bill_processor.py:387 - No content found for section: summary
+2024-11-18 03:40:51,122 - WARNING - telecom_bill_processor.py:387 - No content found for section: fixed_charges
+2024-11-18 03:40:51,122 - WARNING - telecom_bill_processor.py:387 - No content found for section: packages
+2024-11-18 03:40:51,123 - WARNING - telecom_bill_processor.py:387 - No content found for section: usage
+2024-11-18 03:40:51,124 - DEBUG - telecom_bill_processor.py:552 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:40:51,125 - INFO - telecom_bill_processor.py:431 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:40:51,125 - DEBUG - telecom_bill_processor.py:433 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:40:51,125 - DEBUG - telecom_bill_processor.py:437 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:40:51,126 - INFO - telecom_bill_processor.py:525 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:40:51,127 - WARNING - telecom_bill_processor.py:594 - No service charges found
+2024-11-18 03:40:51,127 - DEBUG - telecom_bill_processor.py:595 - Fixed charges section content: No section found
+2024-11-18 03:40:51,128 - INFO - telecom_bill_processor.py:231 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:40:51,128 - INFO - telecom_bill_processor.py:97 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:40:51,129 - INFO - telecom_bill_processor.py:231 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:40:51,130 - INFO - telecom_bill_processor.py:97 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:40:51,131 - INFO - telecom_bill_processor.py:100 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:48:12,918 - INFO - telecom_bill_processor.py:79 - Starting bill processing...
+2024-11-18 03:48:12,921 - DEBUG - telecom_bill_processor.py:566 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:48:12,922 - INFO - telecom_bill_processor.py:445 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:48:12,922 - DEBUG - telecom_bill_processor.py:447 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:48:12,922 - DEBUG - telecom_bill_processor.py:451 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:48:12,925 - INFO - telecom_bill_processor.py:539 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:48:12,925 - WARNING - telecom_bill_processor.py:608 - No service charges found
+2024-11-18 03:48:12,925 - DEBUG - telecom_bill_processor.py:609 - Fixed charges section content: No section found
+2024-11-18 03:48:12,927 - INFO - telecom_bill_processor.py:232 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:48:12,927 - INFO - telecom_bill_processor.py:98 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:48:12,929 - INFO - telecom_bill_processor.py:232 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:48:12,929 - INFO - telecom_bill_processor.py:98 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:48:12,929 - INFO - telecom_bill_processor.py:101 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:48:12,929 - INFO - telecom_bill_processor.py:811 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:48:12,930 - INFO - telecom_bill_processor.py:79 - Starting bill processing...
+2024-11-18 03:48:12,931 - DEBUG - telecom_bill_processor.py:566 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:48:12,931 - INFO - telecom_bill_processor.py:445 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:48:12,931 - DEBUG - telecom_bill_processor.py:447 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:48:12,931 - DEBUG - telecom_bill_processor.py:451 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:48:12,932 - INFO - telecom_bill_processor.py:539 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:48:12,932 - WARNING - telecom_bill_processor.py:608 - No service charges found
+2024-11-18 03:48:12,932 - DEBUG - telecom_bill_processor.py:609 - Fixed charges section content: No section found
+2024-11-18 03:48:12,932 - INFO - telecom_bill_processor.py:232 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:48:12,933 - INFO - telecom_bill_processor.py:98 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:48:12,933 - INFO - telecom_bill_processor.py:232 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:48:12,933 - INFO - telecom_bill_processor.py:98 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:48:12,934 - INFO - telecom_bill_processor.py:101 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:48:12,934 - INFO - telecom_bill_processor.py:811 - Created prompt with usage data: {'050-5148080': {'total_charges': 0}, '050-3060366': {'total_charges': 0}}
+2024-11-18 03:48:16,486 - INFO - telecom_bill_processor.py:79 - Starting bill processing...
+2024-11-18 03:48:16,490 - DEBUG - telecom_bill_processor.py:566 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:48:16,490 - INFO - telecom_bill_processor.py:445 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:48:16,491 - DEBUG - telecom_bill_processor.py:447 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:48:16,491 - DEBUG - telecom_bill_processor.py:451 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:48:16,491 - INFO - telecom_bill_processor.py:539 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:48:16,492 - WARNING - telecom_bill_processor.py:608 - No service charges found
+2024-11-18 03:48:16,492 - DEBUG - telecom_bill_processor.py:609 - Fixed charges section content: No section found
+2024-11-18 03:48:16,492 - INFO - telecom_bill_processor.py:232 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:48:16,493 - INFO - telecom_bill_processor.py:98 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:48:16,493 - INFO - telecom_bill_processor.py:232 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:48:16,493 - INFO - telecom_bill_processor.py:98 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:48:16,494 - INFO - telecom_bill_processor.py:101 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-5148080", "050-3060366"], "usage": {"050-5148080": {"total_charges": 0}, "050-3060366": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:55:28,999 - INFO - telecom_bill_processor.py:79 - Starting bill processing...
+2024-11-18 03:55:29,001 - DEBUG - telecom_bill_processor.py:566 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:55:29,002 - INFO - telecom_bill_processor.py:445 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:55:29,003 - DEBUG - telecom_bill_processor.py:447 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:55:29,003 - DEBUG - telecom_bill_processor.py:451 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:55:29,005 - INFO - telecom_bill_processor.py:539 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:55:29,005 - WARNING - telecom_bill_processor.py:608 - No service charges found
+2024-11-18 03:55:29,006 - DEBUG - telecom_bill_processor.py:609 - Fixed charges section content: No section found
+2024-11-18 03:55:29,007 - INFO - telecom_bill_processor.py:232 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:55:29,008 - INFO - telecom_bill_processor.py:98 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:55:29,009 - INFO - telecom_bill_processor.py:232 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:55:29,009 - INFO - telecom_bill_processor.py:98 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:55:29,009 - INFO - telecom_bill_processor.py:101 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-3060366", "050-5148080"], "usage": {"050-3060366": {"total_charges": 0}, "050-5148080": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:55:29,009 - INFO - telecom_bill_processor.py:811 - Created prompt with usage data: {'050-3060366': {'total_charges': 0}, '050-5148080': {'total_charges': 0}}
+2024-11-18 03:55:29,010 - INFO - telecom_bill_processor.py:79 - Starting bill processing...
+2024-11-18 03:55:29,011 - DEBUG - telecom_bill_processor.py:566 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:55:29,011 - INFO - telecom_bill_processor.py:445 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:55:29,011 - DEBUG - telecom_bill_processor.py:447 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:55:29,011 - DEBUG - telecom_bill_processor.py:451 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:55:29,011 - INFO - telecom_bill_processor.py:539 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:55:29,012 - WARNING - telecom_bill_processor.py:608 - No service charges found
+2024-11-18 03:55:29,012 - DEBUG - telecom_bill_processor.py:609 - Fixed charges section content: No section found
+2024-11-18 03:55:29,012 - INFO - telecom_bill_processor.py:232 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:55:29,012 - INFO - telecom_bill_processor.py:98 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:55:29,012 - INFO - telecom_bill_processor.py:232 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:55:29,013 - INFO - telecom_bill_processor.py:98 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:55:29,013 - INFO - telecom_bill_processor.py:101 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-3060366", "050-5148080"], "usage": {"050-3060366": {"total_charges": 0}, "050-5148080": {"total_charges": 0}}, "charges": {}}
+2024-11-18 03:55:29,013 - INFO - telecom_bill_processor.py:811 - Created prompt with usage data: {'050-3060366': {'total_charges': 0}, '050-5148080': {'total_charges': 0}}
+2024-11-18 03:55:32,369 - INFO - telecom_bill_processor.py:79 - Starting bill processing...
+2024-11-18 03:55:32,374 - DEBUG - telecom_bill_processor.py:566 - Found phone numbers: ['050-5148080', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-3060366', '050-5148080', '050-5148080', '050-5148080', '050-5148080']
+2024-11-18 03:55:32,374 - INFO - telecom_bill_processor.py:445 - Found total amount in first section: 174.48 ₪
+2024-11-18 03:55:32,375 - DEBUG - telecom_bill_processor.py:447 - Matched text: סה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+2024-11-18 03:55:32,375 - DEBUG - telecom_bill_processor.py:451 - Context: ודשיקבועחיוביםמשתנים 
+0.002146610800
+חיובעלפישימושסה"כחשבוןנוכחיכוללמע"מ  ₪174.48
+סכומיםחייביםבמע"מ 149.13
+ מע"מ 17% 25.35
+51107657
+2024-11-18 03:55:32,376 - INFO - telecom_bill_processor.py:539 - Found billing period in full content: 08/09/2024 - 07/10/2024
+2024-11-18 03:55:32,376 - WARNING - telecom_bill_processor.py:608 - No service charges found
+2024-11-18 03:55:32,377 - DEBUG - telecom_bill_processor.py:609 - Fixed charges section content: No section found
+2024-11-18 03:55:32,377 - INFO - telecom_bill_processor.py:232 - Complete data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:55:32,378 - INFO - telecom_bill_processor.py:98 - Processed data for 050-3060366: {"total_charges": 0}
+2024-11-18 03:55:32,379 - INFO - telecom_bill_processor.py:232 - Complete data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:55:32,379 - INFO - telecom_bill_processor.py:98 - Processed data for 050-5148080: {"total_charges": 0}
+2024-11-18 03:55:32,380 - INFO - telecom_bill_processor.py:101 - Processed bill data: {"total_amount": 174.48, "billing_period": "08/09/2024 - 07/10/2024", "phones": ["050-3060366", "050-5148080"], "usage": {"050-3060366": {"total_charges": 0}, "050-5148080": {"total_charges": 0}}, "charges": {}}

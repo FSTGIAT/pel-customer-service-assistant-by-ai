@@ -1,0 +1,62 @@
+// src/services/api.js
+import axios from 'axios';
+
+const API_URL = 'http://localhost:8000/api';
+
+// Create axios instance with default config
+const apiClient = axios.create({
+  baseURL: API_URL,
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  }
+});
+
+// Add request interceptor for error handling
+apiClient.interceptors.request.use(
+  config => {
+    // You can add auth token here if needed
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
+
+// Add response interceptor for error handling
+apiClient.interceptors.response.use(
+  response => response.data,
+  error => {
+    console.error('API Error:', error.response || error);
+    throw error;
+  }
+);
+
+export const chatService = {
+  async sendMessage(message, customerId, context) {
+    return apiClient.post('/chat', {
+      message,
+      customerId,
+      context
+    });
+  },
+
+  async getCustomerInfo(customerId) {
+    return apiClient.get(`/customer/${customerId}`);
+  },
+
+  async getBillingHistory(customerId) {
+    return apiClient.get(`/billing/${customerId}`);
+  },
+
+  async getPdfUrl(customerId, billId) {
+    return apiClient.get(`/billing/${customerId}/pdf/${billId}`);
+  },
+
+  async searchPdf(customerId, billId, searchTerm) {
+    return apiClient.post(`/billing/${customerId}/pdf/${billId}/search`, {
+      searchTerm
+    });
+  }
+};

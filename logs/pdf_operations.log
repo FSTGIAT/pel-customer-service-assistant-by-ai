@@ -1,0 +1,85 @@
+2024-11-18 10:55:59,972 - INFO - Logging initialized
+2024-11-18 10:55:59,972 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-11-18 10:56:05,226 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 10:56:05,590 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 10:59:46,762 - INFO - Logging initialized
+2024-11-18 10:59:46,763 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-11-18 10:59:52,845 - INFO - Legacy trigger request for customer: 3694388_07012024
+2024-11-18 10:59:52,868 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 10:59:53,038 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 10:59:53,075 - INFO - Returning 1 PDFs for customer 3694388_07012024
+2024-11-18 11:00:05,777 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:00:05,898 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:02:48,329 - INFO - Logging initialized
+2024-11-18 11:02:48,330 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-11-18 11:02:52,987 - INFO - Legacy trigger request for customer: 3694388_07012024
+2024-11-18 11:02:52,988 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:02:53,172 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:02:53,172 - INFO - Returning 1 PDFs for customer 3694388_07012024
+2024-11-18 11:02:55,259 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:02:55,379 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:04:02,636 - INFO - Logging initialized
+2024-11-18 11:04:02,637 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-11-18 11:04:04,873 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:04:05,055 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:04:17,183 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:04:17,351 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:05:42,706 - INFO - Logging initialized
+2024-11-18 11:05:42,706 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-11-18 11:05:46,948 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:05:47,131 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:06:42,334 - INFO - Logging initialized
+2024-11-18 11:06:42,335 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-11-18 11:06:43,483 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:06:43,689 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:06:53,061 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:06:53,188 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:09:51,295 - INFO - Logging initialized
+2024-11-18 11:09:51,295 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-11-18 11:09:56,456 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:09:56,633 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:10:04,349 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:10:04,488 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:10:04,489 - INFO - Extracting text from PDF: /root/telecom-customer-service/pdf-test/3694388_07012024.pdf
+2024-11-18 11:10:04,554 - DEBUG - Extracted text from page 1
+2024-11-18 11:10:04,698 - DEBUG - Extracted text from page 2
+2024-11-18 11:10:04,712 - DEBUG - Extracted text from page 3
+2024-11-18 11:10:04,736 - DEBUG - Extracted text from page 4
+2024-11-18 11:10:04,873 - DEBUG - Extracted text from page 5
+2024-11-18 11:10:04,976 - DEBUG - Extracted text from page 6
+2024-11-18 11:10:25,247 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:10:25,365 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:10:25,365 - INFO - Extracting text from PDF: /root/telecom-customer-service/pdf-test/3694388_07012024.pdf
+2024-11-18 11:10:25,433 - DEBUG - Extracted text from page 1
+2024-11-18 11:10:25,545 - DEBUG - Extracted text from page 2
+2024-11-18 11:10:25,559 - DEBUG - Extracted text from page 3
+2024-11-18 11:10:25,590 - DEBUG - Extracted text from page 4
+2024-11-18 11:10:25,700 - DEBUG - Extracted text from page 5
+2024-11-18 11:10:25,809 - DEBUG - Extracted text from page 6
+2024-11-18 11:28:52,028 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:28:52,220 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:28:54,654 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:28:54,782 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:28:54,782 - INFO - Extracting text from PDF: /root/telecom-customer-service/pdf-test/3694388_07012024.pdf
+2024-11-18 11:28:54,849 - DEBUG - Extracted text from page 1
+2024-11-18 11:28:54,968 - DEBUG - Extracted text from page 2
+2024-11-18 11:28:54,982 - DEBUG - Extracted text from page 3
+2024-11-18 11:28:55,010 - DEBUG - Extracted text from page 4
+2024-11-18 11:28:55,104 - DEBUG - Extracted text from page 5
+2024-11-18 11:28:55,184 - DEBUG - Extracted text from page 6
+2024-11-18 11:30:18,598 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:30:18,814 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:30:18,998 - DEBUG - Added PDF: 3694388_07022024.pdf with 6 pages
+2024-11-18 11:30:36,667 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:30:36,805 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:30:36,919 - DEBUG - Added PDF: 3694388_07022024.pdf with 6 pages
+2024-11-18 11:30:36,920 - INFO - Extracting text from PDF: /root/telecom-customer-service/pdf-test/3694388_07022024.pdf
+2024-11-18 11:30:36,983 - DEBUG - Extracted text from page 1
+2024-11-18 11:30:37,124 - DEBUG - Extracted text from page 2
+2024-11-18 11:30:37,146 - DEBUG - Extracted text from page 3
+2024-11-18 11:30:37,188 - DEBUG - Extracted text from page 4
+2024-11-18 11:30:37,400 - DEBUG - Extracted text from page 5
+2024-11-18 11:30:37,677 - DEBUG - Extracted text from page 6
+2024-11-18 11:31:18,582 - INFO - Searching PDFs for customer: 3694388_07012024
+2024-11-18 11:31:18,753 - DEBUG - Added PDF: 3694388_07012024.pdf with 6 pages
+2024-11-18 11:31:18,908 - DEBUG - Added PDF: 3694388_07022024.pdf with 6 pages

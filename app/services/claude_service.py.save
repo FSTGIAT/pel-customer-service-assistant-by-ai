@@ -1,0 +1,57 @@
+from anthropic import Anthropic
+import time
+from typing import Optional
+import backoff
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+class ClaudeService:
+    def __init__(self):
+        self.api_key = os.getenv("ANTHROPIC_API_KEY")
+        if not self.api_key:
+            raise ValueError("ANTHROPIC_API_KEY not found in environment variables")
+            
+        self.client = Anthropic(api_key=self.api_key)
+        self.model = "claude-3-opus-20240229"
+        self.max_retries = 3
+        self.retry_delay = 2  # seconds
+
+    @backoff.on_exception(
+        backoff.expo,
+        Exception,
+        max_tries=3,
+        max_time=30
+    )
+    async def get_response(self, prompt: str) -> str:
+        """Get response from Claude with retry logic"""
+        try:
+            response = self.client.messages.create(
+                model=self.model,
+                messages=[{
+                    "role": "user",
+                    "content": prompt
+                }],
+                max_tokens=1024,
+                temperature=0.7
+            )
+            
+            if not response.content:
+                raise Exception("Empty response from Claude")
+                
+            return response.content[0].text
+            
+        except Exception as e:
+            error_msg = str(e)
+            if "overloaded" in error_msg.lower():
+                print(f"Claude is overloaded, retrying... ({error_msg})")
+                time.sleep(self.retry_delay)
+                raise  # Let backoff handle the retry
+            else:
+                print(f"Unexpected Claude error: {error_msg}")
+                return "I apologize, but I'm having trouble processing your request at the moment. Please try again in a few moments."
+
+# Create a singleton instance
+claude_service = ClaudeService()

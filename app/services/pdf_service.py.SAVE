@@ -1,0 +1,166 @@
+import os
+from datetime import datetime
+from typing import List, Optional, Dict
+from fastapi import HTTPException
+from fastapi.responses import FileResponse
+import PyPDF2
+import re
+from pathlib import Path
+
+class PDFService:
+    """Service for handling PDF operations"""
+    
+    def __init__(self, base_directory: str):
+        """Initialize with base directory for PDFs"""
+        self.base_directory = base_directory
+        self.debug = True
+        self._ensure_directory_exists()
+
+    def _ensure_directory_exists(self):
+        """Ensure the PDF directory exists"""
+        if not os.path.exists(self.base_directory):
+            os.makedirs(self.base_directory)
+            if self.debug:
+                print(f"Created PDF directory: {self.base_directory}")
+
+    async def extract_pdf_text(self, file_path: str, page_number: Optional[int] = None) -> str:
+        """Extract text from PDF file, optionally from a specific page."""
+        try:
+            if self.debug:
+                print(f"Extracting text from PDF: {file_path}")
+
+            with open(file_path, 'rb') as file:
+                pdf_reader = PyPDF2.PdfReader(file)
+                
+                # If page_number is specified, extract that page only
+                if page_number is not None:
+                    if 0 <= page_number < len(pdf_reader.pages):
+                        text = pdf_reader.pages[page_number].extract_text()
+                        if self.debug:
+                            print(f"Extracted text from page {page_number}")
+                            print(f"Sample text: {text[:200]}")
+                        return text
+                    else:
+                        raise HTTPException(
+                            status_code=400,
+                            detail=f"Invalid page number. PDF has {len(pdf_reader.pages)} pages"
+                        )
+                
+                # Extract from all pages
+                pdf_text = ""
+                for i, page in enumerate(pdf_reader.pages):
+                    text = page.extract_text()
+                    # Fix common Hebrew text issues
+                    text = self._fix_hebrew_text(text)
+                    pdf_text += text + "\n"
+                    if self.debug:
+                        print(f"Extracted text from page {i+1}")
+                
+                if self.debug:
+                    print("Full text sample:")
+                    print(pdf_text[:500])
+                
+                return pdf_text
+
+        except FileNotFoundError:
+            error_msg = f"PDF file not found: {file_path}"
+            print(error_msg)
+            raise HTTPException(status_code=404, detail=error_msg)
+        except Exception as e:
+            error_msg = f"Error extracting PDF text: {str(e)}"
+            print(error_msg)
+            raise HTTPException(status_code=500, detail=error_msg)
+
+    def _fix_hebrew_text(self, text: str) -> str:
+        """Fix common Hebrew text extraction issues"""
+        # Remove extra spaces between Hebrew characters
+        text = re.sub(r'(?<=[\u0590-\u05FF])\s+(?=[\u0590-\u05FF])', '', text)
+        
+        # Fix common Hebrew letter substitutions
+        replacements = {
+            '×': 'א',
+            '÷': 'ח',
+            'ñ': 'ם',
+            'í': 'ן',
+            'ó': 'ס',
+            'ú': 'ץ',
+            'ö': 'צ'
+        }
+        
+        for old, new in replacements.items():
+            text = text.replace(old, new)
+        
+        # Fix RTL markers
+        text = text.replace('\u200e', '').replace('\u200f', '')
+        
+        return text
+
+    async def get_customer_pdfs(self, customer_id: str) -> List[dict]:
+        """Get the last 5 PDFs for a customer with metadata."""
+        try:
+            pdf_files = []
+            customer_base = customer_id.split('_')[0]
+            
+            if self.debug:
+                print(f"Searching PDFs for customer base: {customer_base}")
+            
+            for file in os.listdir(self.base_directory):
+                if file.startswith(customer_base) and file.endswith('.pdf'):
+                    full_path = os.path.join(self.base_directory, file)
+                    file_time = os.path.getmtime(full_path)
+                    
+                    try:
+                        with open(full_path, 'rb') as f:
+                            pdf = PyPDF2.PdfReader(f)
+                            total_pages = len(pdf.pages)
+                            
+                            # Extract first page text for preview
+                            preview_text = pdf.pages[0].extract_text()[:200]
+                            
+                            pdf_files.append({
+                                'path': full_path,
+                                'name': file,
+                                'date': datetime.fromtimestamp(file_time),
+                                'url': f"/api/pdf/view/{file}",
+                                'pages': total_pages,
+                                'preview': preview_text
+                            })
+                            
+                            if self.debug:
+                                print(f"Found PDF: {file} with {total_pages} pages")
+                    
+                    except Exception as e:
+                        print(f"Error reading PDF {file}: {str(e)}")
+                        continue
+            
+            # Sort by date and get last 5
+            pdf_files.sort(key=lambda x: x['date'], reverse=True)
+            return pdf_files[:5]
+            
+        except Exception as e:
+            error_msg = f"Error accessing PDFs: {str(e)}"
+            print(error_msg)
+            raise HTTPException(status_code=500, detail=error_msg)
+
+    async def get_pdf_info(self, file_path: str) -> Dict:
+        """Get PDF metadata and basic content."""
+        try:
+            if not os.path.exists(file_path):
+                raise HTTPException(status_code=404, detail="PDF not found")
+                
+            with open(file_path, 'rb') as file:
+                pdf_reader = PyPDF2.PdfReader(file)
+                pdf_text = await self.extract_pdf_text(file_path)
+                
+                return {
+                    "pages": len(pdf_reader.pages),
+                    "filename": os.path.basename(file_path),
+                    "text_sample": pdf_text[:500] if pdf_text else "",
+                    "file_size": os.path.getsize(file_path)
+                }
+                
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Error getting PDF info: {str(e)}")
+
+# Create PDF service instance
+pdf_service = PDFService("/root/telecom-customer-service/pdf-test")

@@ -1,0 +1,132 @@
+<!-- src/views/ChatView.vue -->
+<template>
+  <div class="flex h-screen bg-gray-100">
+    <!-- Left Panel - PDF Viewer -->
+    <div class="w-1/2 p-4 bg-white border-r border-gray-200">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-xl font-semibold">Customer Bill</h2>
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-search w-5 h-5 text-gray-500"></i>
+          <span class="text-sm text-gray-500">Search Document</span>
+        </div>
+      </div>
+      <div class="bg-gray-100 h-full rounded-lg flex items-center justify-center">
+        <i class="fas fa-file-text w-16 h-16 text-gray-400"></i>
+        <p class="text-gray-500 ml-2">PDF Viewer Area</p>
+      </div>
+    </div>
+
+    <!-- Right Panel - Chat Interface -->
+    <div class="w-1/2 flex flex-col">
+      <!-- Customer Info Header -->
+      <div class="bg-white p-4 border-b border-gray-200">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-semibold">Customer #1234</h2>
+            <p class="text-sm text-gray-500">John Doe • Premium Plan</p>
+          </div>
+          <div class="flex items-center space-x-2 text-sm text-gray-500">
+            <i class="fas fa-clock w-4 h-4"></i>
+            <span>Session: {{ sessionTime }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Messages -->
+      <div class="flex-1 overflow-y-auto p-4 space-y-4">
+        <div v-for="(message, index) in messages" 
+             :key="index" 
+             :class="['flex', message.type === 'user' ? 'justify-end' : 'justify-start']">
+          <div :class="['flex items-start space-x-2 max-w-[80%]',
+                       message.type === 'system' ? 'justify-center w-full' : '']">
+            <div v-if="message.type === 'bot'" 
+                 class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+              <i class="fas fa-robot w-5 h-5 text-blue-600"></i>
+            </div>
+            <div :class="['p-3 rounded-lg',
+                         message.type === 'user' ? 'bg-blue-600 text-white' :
+                         message.type === 'bot' ? 'bg-gray-100 text-gray-800' :
+                         'bg-gray-100 text-gray-500 text-sm w-full text-center']">
+              {{ message.content }}
+            </div>
+            <div v-if="message.type === 'user'" 
+                 class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+              <i class="fas fa-user w-5 h-5 text-gray-600"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="p-4 bg-white border-t border-gray-200">
+        <div class="flex items-center space-x-2">
+          <input
+            v-model="input"
+            type="text"
+            placeholder="Type your message..."
+            class="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+            @keyup.enter="sendMessage"
+          />
+          <button
+            @click="sendMessage"
+            class="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none"
+          >
+            <i class="fas fa-paper-plane w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const messages = ref([
+  {
+    type: 'system',
+    content: 'Connected to billing support AI assistant'
+  },
+  {
+    type: 'bot',
+    content: 'Hello! I see you\'re viewing the billing statement for customer #1234. How can I help you today?'
+  }
+])
+
+const input = ref('')
+const sessionTime = ref('0:00')
+
+const sendMessage = () => {
+  if (!input.value.trim()) return
+  
+  messages.value.push({
+    type: 'user',
+    content: input.value
+  })
+  input.value = ''
+  
+  // Simulate bot response
+  setTimeout(() => {
+    messages.value.push({
+      type: 'bot',
+      content: 'I\'ll help you analyze that billing question. Let me check the statement details...'
+    })
+  }, 1000)
+}
+
+// Session timer
+onMounted(() => {
+  let seconds = 0
+  setInterval(() => {
+    seconds++
+    const minutes = Math.floor(seconds / 60)
+    const remainingSeconds = seconds % 60
+    sessionTime.value = `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`
+  }, 1000)
+})
+</script>
+
+<style>
+/* Add these styles if you haven't added Font Awesome yet */
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+</style>

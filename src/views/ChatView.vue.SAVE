@@ -1,0 +1,264 @@
+<script setup>
+import { ref, onMounted, computed } from 'vue'
+import { chatService } from '@/services/api'
+import VuePdfEmbed from 'vue-pdf-embed'
+
+// Chat state
+const messages = ref([])
+const input = ref('')
+const isLoading = ref(false)
+const customerId = ref('3694388_07012024')  // Your test customer ID
+const customerInfo = ref(null)
+const sessionTime = ref('0:00')
+const error = ref(null)
+
+// PDF state
+const pdfFiles = ref([])
+const currentPdfIndex = ref(0)
+const isLoadingPdf = ref(false)
+
+// Computed PDF URL
+const currentPdfUrl = computed(() => {
+  if (!pdfFiles.value.length) return null
+  return `http://127.0.0.1:8000${pdfFiles.value[currentPdfIndex.value].url}`
+})
+
+// Initialize chat session and load PDFs
+const initializeChat = async () => {
+  try {
+    isLoading.value = true
+    isLoadingPdf.value = true
+
+    // Load PDFs through legacy trigger
+    const pdfResponse = await chatService.getPdfList(customerId.value)
+    pdfFiles.value = pdfResponse.pdf_files
+    console.log('Loaded PDFs:', pdfFiles.value)  // Debug log
+
+    // Set customer info
+    customerInfo.value = {
+      id: customerId.value,
+      name: "John Doe",  // This would come from your API
+      plan: "Premium Plan"
+    }
+
+    // Add initial messages
+    messages.value = [
+      {
+        type: 'system',
+        content: 'Connected to billing support AI assistant'
+      },
+      {
+        type: 'bot',
+        content: `Hello! I'm reviewing your billing information. How can I help you today?`
+      }
+    ]
+
+  } catch (err) {
+    console.error('Initialization error:', err)
+    error.value = 'Failed to initialize chat. Please try again.'
+  } finally {
+    isLoading.value = false
+    isLoadingPdf.value = false
+  }
+}
+
+// Handle PDF navigation
+const navigatePdf = (direction) => {
+  const newIndex = currentPdfIndex.value + direction
+  if (newIndex >= 0 && newIndex < pdfFiles.value.length) {
+    currentPdfIndex.value = newIndex
+  }
+}
+
+// Send message function
+const sendMessage = async () => {
+  if (!input.value.trim() || isLoading.value) return
+  
+  const messageText = input.value
+  input.value = '' // Clear input immediately
+
+  // Add user message
+  messages.value.push({
+    type: 'user',
+    content: messageText
+  })
+
+  try {
+    isLoading.value = true
+    
+    // Add current PDF context to the message
+    const currentPdf = pdfFiles.value[currentPdfIndex.value]
+    const response = await chatService.sendMessage(
+      messageText,
+      customerId.value,
+      messages.value.slice(-5),
+      currentPdf?.path
+    )
+
+    messages.value.push({
+      type: 'bot',
+      content: response.response
+    })
+  } catch (err) {
+    console.error('Chat error:', err)
+    messages.value.push({
+      type: 'system',
+      content: 'Sorry, I encountered an error. Please try again.'
+    })
+  } finally {
+    isLoading.value = false
+  }
+}
+
+// Start session timer
+const startSessionTimer = () => {
+  let seconds = 0
+  setInterval(() => {
+    seconds++
+    const minutes = Math.floor(seconds / 60)
+    const remainingSeconds = seconds % 60
+    sessionTime.value = `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`
+  }, 1000)
+}
+
+// Initialize on mount
+onMounted(() => {
+  initializeChat()
+  startSessionTimer()
+})
+</script>
+
+<template>
+  <div class="flex h-screen bg-gray-100">
+    <!-- Left Panel - PDF Viewer -->
+    <div class="w-1/2 p-4 bg-white border-r border-gray-200">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-xl font-semibold">Customer Bill</h2>
+        
+        <!-- PDF Navigation -->
+        <div class="flex items-center space-x-4">
+          <div class="flex items-center space-x-2">
+            <button 
+              @click="() => navigatePdf(-1)"
+              :disabled="currentPdfIndex === 0"
+              class="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded disabled:opacity-50"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <span class="text-sm text-gray-600" v-if="pdfFiles.length">
+              Bill {{ currentPdfIndex + 1 }} of {{ pdfFiles.length }}
+            </span>
+            
+            <button 
+              @click="() => navigatePdf(1)"
+              :disabled="currentPdfIndex === pdfFiles.length - 1"
+              class="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded disabled:opacity-50"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PDF Display -->
+      <div class="h-[calc(100vh-8rem)] rounded-lg overflow-hidden bg-gray-50">
+        <div v-if="isLoadingPdf" class="flex items-center justify-center h-full">
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+        </div>
+        
+        <VuePdfEmbed
+          v-else-if="currentPdfUrl"
+          :source="currentPdfUrl"
+          class="h-full w-full"
+          @error="error => console.error('PDF Error:', error)"
+        />
+        
+        <div v-else class="flex items-center justify-center h-full">
+          <i class="fas fa-file-text w-16 h-16 text-gray-400"></i>
+          <p class="text-gray-500 ml-2">No billing document available</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel - Chat Interface -->
+    <div class="w-1/2 flex flex-col">
+      <!-- Customer Info Header -->
+      <div class="bg-white p-4 border-b border-gray-200">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-semibold">
+              Customer #{{ customerInfo?.id || customerId }}
+            </h2>
+            <p class="text-sm text-gray-500">
+              {{ customerInfo?.name || 'Loading...' }} •
+              {{ customerInfo?.plan || 'Standard Plan' }}
+            </p>
+          </div>
+          <div class="flex items-center space-x-2 text-sm text-gray-500">
+            <i class="fas fa-clock w-4 h-4"></i>
+            <span>Session: {{ sessionTime }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div v-if="error" class="bg-red-50 p-4 border-b border-red-100">
+        <p class="text-red-600 text-sm">{{ error }}</p>
+      </div>
+
+      <!-- Chat Messages -->
+      <div class="flex-1 overflow-y-auto p-4 space-y-4">
+        <div v-for="(message, index) in messages"
+             :key="index"
+             :class="['flex', message.type === 'user' ? 'justify-end' : 'justify-start']">
+          <div :class="['flex items-start space-x-2 max-w-[80%]',
+                       message.type === 'system' ? 'justify-center w-full' : '']">
+            <div v-if="message.type === 'bot'"
+                 class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+              <i class="fas fa-robot w-5 h-5 text-blue-600"></i>
+            </div>
+            <div :class="['p-3 rounded-lg',
+                         message.type === 'user' ? 'bg-blue-600 text-white' :
+                         message.type === 'bot' ? 'bg-gray-100 text-gray-800' :
+                         'bg-gray-100 text-gray-500 text-sm w-full text-center']">
+              {{ message.content }}
+            </div>
+            <div v-if="message.type === 'user'"
+                 class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+              <i class="fas fa-user w-5 h-5 text-gray-600"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div v-if="isLoading" class="flex justify-center">
+          <div class="animate-pulse text-gray-400">
+            AI is thinking...
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="p-4 bg-white border-t border-gray-200">
+        <div class="flex items-center space-x-2">
+          <input
+            v-model="input"
+            type="text"
+            placeholder="Type your message..."
+            class="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+            @keyup.enter="sendMessage"
+            :disabled="isLoading"
+          />
+          <button
+            @click="sendMessage"
+            class="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none disabled:opacity-50"
+            :disabled="isLoading || !input.trim()"
+          >
+            <i class="fas fa-paper-plane w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
