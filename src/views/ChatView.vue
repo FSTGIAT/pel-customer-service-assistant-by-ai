@@ -1,18 +1,28 @@
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue'
+import { ref, onMounted, computed, watch, onUnmounted } from 'vue'
 import { chatService } from '@/services/api'
 import VuePdfEmbed from 'vue-pdf-embed'
+import { useSessionStore } from '@/stores/session'
 
-// Chat state
+// Session management
+const sessionStore = useSessionStore()
+const sessionError = ref(null)
+const isSessionExpired = ref(false)
+const reconnectAttempts = ref(0)
+const MAX_RECONNECT_ATTEMPTS = 3
+const lastActivityTime = ref(Date.now())
+const SESSION_TIMEOUT = 5 * 60 * 1000 // 5 minutes
+
+// Existing state (keeping your current state)
 const messages = ref([])
 const input = ref('')
 const isLoading = ref(false)
-const customerId = ref('3694388_07012024')  // Your test customer ID
+const customerId = ref('3694388_07012024')
 const customerInfo = ref(null)
 const sessionTime = ref('0:00')
 const error = ref(null)
 
-// PDF state
+// PDF state (keeping your current PDF state)
 const pdfFiles = ref([])
 const currentPdfIndex = ref(0)
 const isLoadingPdf = ref(false)
@@ -21,7 +31,7 @@ const totalPages = ref(1)
 const scale = ref(1)
 const pdfLoaded = ref(false)
 
-// Computed PDF URL
+// Your existing computed PDF URL
 const currentPdfUrl = computed(() => {
   if (!pdfFiles.value.length) {
     console.log('No PDFs available');
@@ -34,180 +44,252 @@ const currentPdfUrl = computed(() => {
   return url;
 });
 
-// Initialize chat session and load PDFs
+// Enhanced initialize chat with session handling
 const initializeChat = async () => {
   try {
     isLoading.value = true;
     isLoadingPdf.value = true;
+    console.log('Starting chat initialization...')
+    console.log('Using customer ID:', customerId.value)
 
-    console.log('Starting chat initialization...');
+    // Initialize session first
+    await sessionStore.initializeSession(customerId.value)
 
-    // Load PDFs
-    const pdfResponse = await chatService.getPdfList(customerId.value);
+    // Load PDFs with session token
+    const pdfResponse = await chatService.getPdfList(
+      customerId.value, 
+      await sessionStore.getSessionToken()
+    );
+    
     console.log('Raw PDF response:', pdfResponse);
 
     if (pdfResponse && pdfResponse.pdf_files && Array.isArray(pdfResponse.pdf_files)) {
-      pdfFiles.value = pdfResponse.pdf_files;
-      
-      // Set initial total pages if there are PDFs
-      if (pdfFiles.value.length > 0) {
-        const firstPdf = pdfFiles.value[0];
-        totalPages.value = firstPdf.pages || 1;
-        console.log('Initial PDF loaded:', firstPdf);
-        console.log('Total pages:', totalPages.value);
+      if (pdfResponse.pdf_files.length === 0) {
+        console.warn('No PDFs available for customer:', customerId.value)
+        error.value = 'No billing documents available'
+      } else {
+        pdfFiles.value = pdfResponse.pdf_files
+        
+        // Set initial total pages if there are PDFs
+        if (pdfFiles.value.length > 0) {
+          const firstPdf = pdfFiles.value[0]
+          totalPages.value = firstPdf.pages || 1
+          console.log('Initial PDF loaded:', firstPdf)
+          console.log('Total pages:', totalPages.value)
+        }
+        console.log('Processed PDF files:', pdfFiles.value)
       }
-
-      console.log('Processed PDF files:', pdfFiles.value);
     } else {
-      console.warn('Invalid PDF response structure:', pdfResponse);
-      throw new Error('Invalid PDF response structure');
+      console.warn('Invalid PDF response structure:', pdfResponse)
+      throw new Error('Invalid PDF response structure')
     }
 
-    // Set customer info
+    // Set customer info from session
     customerInfo.value = {
       id: customerId.value,
-      name: "John Doe",
-      plan: "Premium Plan"
+      name: await sessionStore.getCustomerName(),
+      plan: await sessionStore.getCustomerPlan()
     };
 
     // Add initial messages
     messages.value = [
       {
         type: 'system',
-        content: 'Connected to billing support AI assistant'
+        content: 'מחובר למערכת שירות לקוחות פלאפון'
       },
       {
         type: 'bot',
-        content: `Hello! I'm reviewing your billing information. How can I help you today?`
+        content: `שלום! אני בודק את חשבון החיוב שלך. כיצד אוכל לעזור?`
       }
     ];
 
+    startSessionMonitoring();
   } catch (err) {
-    console.error('Initialization error:', err);
-    error.value = err.message || 'Failed to initialize chat. Please try again.';
+    console.error('Initialization error:', err)
+    handleError(err);  // Changed from error.value assignment to using handleError
   } finally {
     isLoading.value = false;
     isLoadingPdf.value = false;
   }
 };
-
-// Watch for PDF changes
-watch(currentPdfIndex, async () => {
-  const currentPdf = pdfFiles.value[currentPdfIndex.value]
-  if (currentPdf) {
-    totalPages.value = currentPdf.totalPages || 1
-    currentPage.value = 1
-    scale.value = 1
-    console.log(`Switched to PDF with ${totalPages.value} pages`)
-  }
-})
-
-// PDF control methods
-const onPdfRendered = async (e) => {
-  if (e.pdf) {
-    const numPages = e.pdf.numPages
-    totalPages.value = numPages
-    // Update the stored PDF info
-    if (pdfFiles.value[currentPdfIndex.value]) {
-      pdfFiles.value[currentPdfIndex.value].totalPages = numPages
-    }
-    console.log(`PDF rendered with ${numPages} pages`)
-  }
-}
-
-// Handle PDF navigation
-const navigatePdf = async (direction) => {
-  const newIndex = currentPdfIndex.value + direction
-  if (newIndex >= 0 && newIndex < pdfFiles.value.length) {
-    currentPdfIndex.value = newIndex
-    currentPage.value = 1  // Reset to first page
-    totalPages.value = pdfFiles.value[newIndex].totalPages || 1
-    console.log(`Switched to PDF ${newIndex} with ${totalPages.value} pages`)
-  }
-}
-
-// PDF zoom controls
-const zoomIn = () => {
-  scale.value = Math.min(scale.value + 0.1, 2)
-}
-
-const zoomOut = () => {
-  scale.value = Math.max(scale.value - 0.1, 0.5)
-}
-
-// Page navigation
-const nextPage = () => {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value++
-  }
-}
-
-const previousPage = () => {
-  if (currentPage.value > 1) {
-    currentPage.value--
-  }
-}
-
-// Send message function
-const sendMessage = async () => {
-  if (!input.value.trim() || isLoading.value) return
+// Enhanced error handling
+const handleError = (err) => {
+  console.error('Error:', err);
   
-  const messageText = input.value
-  input.value = '' // Clear input immediately
+  if (err.response?.status === 401) {
+    sessionError.value = 'פג תוקף החיבור למערכת. מתחבר מחדש...'
+    handleSessionExpiration();
+  } else if (err.response?.status === 429) {
+    error.value = 'נא להמתין מספר דקות ולנסות שוב'
+  } else {
+    error.value = err.message || 'Failed to initialize chat. Please try again.';
+  }
+};
 
-  // Add user message
+// Session management methods
+const handleSessionExpiration = async () => {
+  isSessionExpired.value = true;
+  
+  if (reconnectAttempts.value < MAX_RECONNECT_ATTEMPTS) {
+    reconnectAttempts.value++;
+    try {
+      await sessionStore.refreshSession();
+      isSessionExpired.value = false;
+      sessionError.value = null;
+      reconnectAttempts.value = 0;
+    } catch (err) {
+      console.error('Session refresh failed:', err);
+      sessionError.value = 'החיבור למערכת נכשל. מנסה שוב...'
+    }
+  } else {
+    sessionError.value = 'לא ניתן להתחבר למערכת. נא לטעון את הדף מחדש'
+  }
+};
+
+const startSessionMonitoring = () => {
+  setInterval(() => {
+    const timeSinceLastActivity = Date.now() - lastActivityTime.value;
+    if (timeSinceLastActivity > SESSION_TIMEOUT) {
+      handleSessionExpiration();
+    }
+  }, 30000); // Check every 30 seconds
+};
+
+const updateActivity = () => {
+  lastActivityTime.value = Date.now();
+  sessionStore.updateLastActivity();
+};
+
+// Enhanced message sending with session handling
+const sendMessage = async () => {
+  if (!input.value.trim() || isLoading.value) return;
+  
+  updateActivity();
+  const messageText = input.value;
+  input.value = '';
+
   messages.value.push({
     type: 'user',
     content: messageText
-  })
+  });
 
   try {
-    isLoading.value = true
+    isLoading.value = true;
     
-    // Add current PDF context to the message
-    const currentPdf = pdfFiles.value[currentPdfIndex.value]
+    const currentPdf = pdfFiles.value[currentPdfIndex.value];
     const response = await chatService.sendMessage(
       messageText,
       customerId.value,
       messages.value.slice(-5),
-      currentPdf?.path
-    )
+      currentPdf?.path,
+      await sessionStore.getSessionToken()
+    );
 
     messages.value.push({
       type: 'bot',
       content: response.response
-    })
+    });
   } catch (err) {
-    console.error('Chat error:', err)
+    console.error('Chat error:', err);
     messages.value.push({
       type: 'system',
       content: 'Sorry, I encountered an error. Please try again.'
-    })
+    });
   } finally {
-    isLoading.value = false
+    isLoading.value = false;
   }
-}
+};
 
-// Start session timer
+// Enhanced session timer with auto-refresh
 const startSessionTimer = () => {
-  let seconds = 0
+  let seconds = 0;
   setInterval(() => {
-    seconds++
-    const minutes = Math.floor(seconds / 60)
-    const remainingSeconds = seconds % 60
-    sessionTime.value = `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`
-  }, 1000)
-}
+    seconds++;
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    sessionTime.value = `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+    
+    // Refresh session if needed
+    if (minutes > 0 && minutes % 4 === 0 && remainingSeconds === 0) {
+      sessionStore.refreshSession();
+    }
+  }, 1000);
+};
 
-// Initialize on mount
+// Cleanup
+onUnmounted(() => {
+  sessionStore.cleanup();
+});
+
+// Initialize
 onMounted(() => {
-  initializeChat()
-  startSessionTimer()
-})
+  initializeChat();
+  startSessionTimer();
+});
+
+// Watch for session errors
+watch(() => sessionStore.sessionError, (newError) => {
+  if (newError) {
+    sessionError.value = newError;
+  }
+});
+
+// Keeping your existing PDF control methods
+const onPdfRendered = async (e) => {
+  if (e.pdf) {
+    const numPages = e.pdf.numPages;
+    totalPages.value = numPages;
+    if (pdfFiles.value[currentPdfIndex.value]) {
+      pdfFiles.value[currentPdfIndex.value].totalPages = numPages;
+    }
+    console.log(`PDF rendered with ${numPages} pages`);
+  }
+};
+
+// Keeping your existing PDF navigation methods
+const navigatePdf = async (direction) => {
+  const newIndex = currentPdfIndex.value + direction;
+  if (newIndex >= 0 && newIndex < pdfFiles.value.length) {
+    currentPdfIndex.value = newIndex;
+    currentPage.value = 1;
+    totalPages.value = pdfFiles.value[newIndex].totalPages || 1;
+    console.log(`Switched to PDF ${newIndex} with ${totalPages.value} pages`);
+  }
+};
+
+// Keeping your existing zoom controls
+const zoomIn = () => {
+  scale.value = Math.min(scale.value + 0.1, 2);
+};
+
+const zoomOut = () => {
+  scale.value = Math.max(scale.value - 0.1, 0.5);
+};
+
+// Keeping your existing page navigation
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+  }
+};
+
+const previousPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+  }
+};
 </script>
 
 <template>
   <div class="flex h-screen bg-gray-100">
+    <!-- Session Error Alert -->
+    <div 
+      v-if="sessionError" 
+      class="absolute top-0 left-0 right-0 z-50 bg-red-50 p-4 text-red-700 text-center"
+    >
+      {{ sessionError }}
+    </div>
+
     <!-- Left Panel - PDF Viewer -->
     <div class="w-1/2 p-4 bg-white border-r border-gray-200">
       <div class="flex items-center justify-between mb-4">
@@ -217,24 +299,24 @@ onMounted(() => {
         <div class="flex items-center space-x-4">
           <!-- Bill Navigation -->
           <div class="flex items-center space-x-2">
-  <button 
-    @click="() => navigatePdf(-1)"
-    :disabled="currentPdfIndex === 0"
-    class="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded disabled:opacity-50"
-  >
-    <i class="fas fa-chevron-left"></i>
-  </button>
-  <span class="text-sm text-gray-600" v-if="pdfFiles.length">
-    Bill {{ currentPdfIndex + 1 }} of {{ pdfFiles.length }} 
-    ({{ totalPages }} pages)
-  </span>
-  <button 
-    @click="() => navigatePdf(1)"
-    :disabled="currentPdfIndex === pdfFiles.length - 1"
-    class="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded disabled:opacity-50"
-  >
-    <i class="fas fa-chevron-right"></i>
-  </button>
+            <button 
+              @click="() => navigatePdf(-1)"
+              :disabled="currentPdfIndex === 0"
+              class="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded disabled:opacity-50"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <span class="text-sm text-gray-600" v-if="pdfFiles.length">
+              Bill {{ currentPdfIndex + 1 }} of {{ pdfFiles.length }} 
+              ({{ totalPages }} pages)
+            </span>
+            <button 
+              @click="() => navigatePdf(1)"
+              :disabled="currentPdfIndex === pdfFiles.length - 1"
+              class="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded disabled:opacity-50"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
           </div>
 
           <!-- Page Navigation -->
