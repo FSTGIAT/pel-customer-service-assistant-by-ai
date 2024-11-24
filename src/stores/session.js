@@ -1,26 +1,52 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { chatService } from '../services/api'
 
 export const useSessionStore = defineStore('session', () => {
   // State
   const sessionToken = ref(null)
   const sessionError = ref(null)
   const lastActivity = ref(Date.now())
-  const customerData = ref(null)
+  const customerData = ref({
+    name: 'Customer Name',
+    plan: 'Standard Plan',
+    // other properties...
+  })
+
+  // Helper function
+  const generateToken = (customerId) => {
+    return `session_${customerId}_${Date.now()}_${Math.random().toString(36).substr(2)}`
+  }
 
   // Actions
   const initializeSession = async (customerId) => {
     try {
-      sessionToken.value = `session_${customerId}_${Date.now()}`
+      // Get PDF data first
+      const pdfResponse = await chatService.getPdfList(customerId)
+      if (!pdfResponse?.pdf_files?.length) {
+        throw new Error('No customer data found')
+      }
+
+      // Generate session token
+      sessionToken.value = generateToken(customerId)
+      
+      // Set customer data from PDF
+      const pdfData = pdfResponse.pdf_files[0]
       customerData.value = {
         id: customerId,
-        name: 'ורד כהן', // Default name
-        plan: 'Premium Plan'
+        name: customerData?.name || 'Loading...',
+        plan: customerData?.plan || 'Standard Plan',
+        pdfInfo: {
+          fileName: pdfData.name,
+          date: pdfData.date,
+          pages: pdfData.pages
+        }
       }
+
       lastActivity.value = Date.now()
       sessionError.value = null
+      return customerData.value
     } catch (error) {
-      console.error('Session initialization failed:', error)
       sessionError.value = error.message
       throw error
     }
@@ -29,17 +55,21 @@ export const useSessionStore = defineStore('session', () => {
   const refreshSession = async () => {
     try {
       if (sessionToken.value) {
+        // Generate completely new token
+        sessionToken.value = generateToken(customerData.value.id)
         lastActivity.value = Date.now()
         sessionError.value = null
+        return sessionToken.value
       } else {
         throw new Error('No active session')
       }
     } catch (error) {
-      console.error('Session refresh failed:', error)
       sessionError.value = error.message
       throw error
     }
   }
+
+  
 
   const getSessionToken = async () => sessionToken.value
   const getCustomerName = async () => customerData.value?.name || ''
@@ -69,6 +99,13 @@ export const useSessionStore = defineStore('session', () => {
     getCustomerName,
     getCustomerPlan,
     updateLastActivity,
-    cleanup
+    cleanup,
+    // New getters
+    getPdfInfo: () => customerData.value?.pdfInfo || null,
+    getCustomerId: () => customerData.value?.id || '',
+    // Helper methods
+    isSessionActive: () => !!sessionToken.value,
+    getLastActivity: () => lastActivity.value,
+    getSessionError: () => sessionError.value
   }
 })

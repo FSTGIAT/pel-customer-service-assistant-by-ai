@@ -12,7 +12,9 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",
@@ -20,6 +22,7 @@
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.1.5",
     "axios": "^1.7.7",
+    "chart.js": "^4.4.6",
     "lucide-vue": "^0.456.0",
     "lucide-vue-next": "^0.456.0",
     "pinia": "^2.2.6",

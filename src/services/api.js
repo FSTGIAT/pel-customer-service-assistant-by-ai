@@ -11,6 +11,7 @@ const apiClient = axios.create({
     }
 });
 
+
 // Response interceptor for better error handling
 apiClient.interceptors.response.use(
     response => response.data,
@@ -34,18 +35,21 @@ export const chatService = {
     async getPdfList(customerId) {
         try {
             console.log('Fetching PDFs for customer:', customerId);
-            const response = await apiClient.post('/legacy/trigger', {
+            // Change from '/api/legacy/trigger' to '/legacy/trigger'
+            const response = await apiClient.post('/legacy/trigger', {  // CHANGED THIS LINE
                 customer_id: customerId
+            }, {
+                // Add timeout specifically for PDF loading
+                timeout: 60000, // 60 seconds for PDF loading
             });
-            console.log('PDF Response:', response); // Note: response is already response.data due to interceptor
             
-            // Validate response structure
+            console.log('PDF Response:', response);
+            
             if (response && response.pdf_files && Array.isArray(response.pdf_files)) {
-                // Map additional metadata if needed
                 const enhancedPdfs = response.pdf_files.map(pdf => ({
                     ...pdf,
                     totalPages: pdf.pages || 1,
-                    fullUrl: `http://127.0.0.1:8000${pdf.url}`
+                    fullUrl: `${API_URL}${pdf.url}`
                 }));
                 
                 return {
@@ -63,23 +67,51 @@ export const chatService = {
 
     async sendMessage(message, customerId, context, pdfPath = null) {
         try {
-            const response = await apiClient.post('/chat', {
+            console.log('Sending message to API:', {
                 message,
                 customerId,
-                context,
-                pdf_path: pdfPath
+                contextLength: context?.length,
+                hasPdfPath: !!pdfPath
             });
-            return response; // Already transformed by interceptor
+
+            // Format the request body according to your FastAPI model
+            const requestBody = {
+                message: message,
+                customerId: customerId,  // Make sure this matches your Pydantic model
+                context: context ? context.map(msg => ({
+                    type: msg.type,
+                    content: msg.content
+                })) : [],
+                pdf_path: pdfPath || null
+            };
+
+            console.log('Request body:', requestBody);  // Debug log
+
+            const response = await apiClient.post('/chat', requestBody);
+
+            console.log('API Response:', response);
+            
+            if (response && response.response) {
+                return response;
+            } else {
+                throw new Error('Invalid API response format');
+            }
         } catch (error) {
-            console.error('Error sending message:', error);
+            console.error('Error in sendMessage:', {
+                error,
+                requestData: error.config?.data,
+                response: error.response?.data
+            });
             throw error;
         }
     },
 
+    // Also update these methods if you're using them
     async getPdfInfo(customerId, filename) {
         try {
-            const response = await apiClient.get(`/pdf/info/${customerId}/${filename}`);
-            return response; // Already transformed by interceptor
+            // Change from '/api/pdf/info' to '/pdf/info'
+            const response = await apiClient.get(`/pdf/info/${customerId}/${filename}`);  // CHANGED THIS LINE
+            return response;
         } catch (error) {
             console.error('Error getting PDF info:', error);
             return null;
@@ -88,41 +120,17 @@ export const chatService = {
 
     async getPdfText(filename, page = null) {
         try {
-            const url = `/pdf/text/${filename}${page ? `?page=${page}` : ''}`;
+            // Change from '/api/pdf/text' to '/pdf/text'
+            const url = `/pdf/text/${filename}${page ? `?page=${page}` : ''}`;  // CHANGED THIS LINE
             const response = await apiClient.get(url);
-            return response; // Already transformed by interceptor
+            return response;
         } catch (error) {
             console.error('Error getting PDF text:', error);
             throw error;
         }
-    },
-
-    // New helper methods
-    async getCurrentPdfContent(customerId, filename) {
-        try {
-            const text = await this.getPdfText(filename);
-            return text?.content || '';
-        } catch (error) {
-            console.error('Error getting PDF content:', error);
-            return '';
-        }
-    },
-
-    async getPdfPages(customerId, filename) {
-        try {
-            const info = await this.getPdfInfo(customerId, filename);
-            return info?.pages || 1;
-        } catch (error) {
-            console.error('Error getting PDF pages:', error);
-            return 1;
-        }
-    },
-
-    // Utility method to check if a response is valid
-    isValidResponse(response) {
-        return response && typeof response === 'object' && !response.error;
     }
 };
+
 
 // For debugging purposes in development
 if (process.env.NODE_ENV === 'development') {

@@ -2,7 +2,60 @@
 import { ref, onMounted, computed, watch, onUnmounted } from 'vue'
 import { chatService } from '@/services/api'
 import VuePdfEmbed from 'vue-pdf-embed'
-import { useSessionStore } from '@/stores/session'
+import { useSessionStore } from '@/stores/sessionStore'
+
+const headerSessionTime = ref('00:00');
+const headerSessionStartTime = ref(new Date());
+const headerTimerInterval = ref(null);
+
+const startHeaderTimer = () => {
+  // Clear any existing timer
+  if (headerTimerInterval.value) {
+    clearInterval(headerTimerInterval.value);
+  }
+
+  // Reset start time
+  headerSessionStartTime.value = new Date();
+  headerSessionTime.value = '00:00';
+
+  // Start new timer
+  headerTimerInterval.value = setInterval(() => {
+    const now = new Date();
+    const diff = Math.floor((now - headerSessionStartTime.value) / 1000);
+    const mins = Math.floor(diff / 60);
+    const secs = diff % 60;
+    headerSessionTime.value = `${mins}:${String(secs).padStart(2, '0')}`;
+  }, 1000);
+  return headerTimerInterval.value;
+};
+
+
+const updateSessionStorage = () => {
+  const currentSession = {
+    id: sessionStore.sessionToken,
+    customerId: customerId.value,
+    customerName: customerInfo.value?.name || 'Unknown',
+    startTime: sessionStore.startTime || new Date().toISOString(),
+    lastActivity: new Date().toISOString(),
+    plan: customerInfo.value?.plan || 'Standard Plan'
+  };
+
+  try {
+    const sessions = JSON.parse(localStorage.getItem('activeSessions') || '[]');
+    const sessionIndex = sessions.findIndex(s => s.id === currentSession.id);
+    
+    if (sessionIndex >= 0) {
+      sessions[sessionIndex] = currentSession;
+    } else {
+      sessions.push(currentSession);
+    }
+    
+    localStorage.setItem('activeSessions', JSON.stringify(sessions));
+    console.log('Updated sessions storage:', sessions);
+  } catch (error) {
+    console.error('Error updating session storage:', error);
+  }
+ }
 
 // Session management
 const sessionStore = useSessionStore()
@@ -17,7 +70,7 @@ const SESSION_TIMEOUT = 5 * 60 * 1000 // 5 minutes
 const messages = ref([])
 const input = ref('')
 const isLoading = ref(false)
-const customerId = ref('3694388_07012024')
+const customerId = ref('3694388')
 const customerInfo = ref(null)
 const sessionTime = ref('0:00')
 const error = ref(null)
@@ -33,65 +86,109 @@ const pdfLoaded = ref(false)
 
 // Your existing computed PDF URL
 const currentPdfUrl = computed(() => {
-  if (!pdfFiles.value.length) {
-    console.log('No PDFs available');
-    return null;
+  const currentPdf = pdfFiles.value[currentPdfIndex.value];
+  if (!currentPdf) return null;
+  
+  // Only load if it's the current PDF
+  if (!currentPdf.loaded) {
+    console.log('Loading PDF:', currentPdf.url);
+    currentPdf.loaded = true;
   }
   
-  const currentPdf = pdfFiles.value[currentPdfIndex.value];
-  const url = `http://127.0.0.1:8000${currentPdf.url}`;
-  console.log('Current PDF URL:', url);
-  return url;
+  return currentPdf.fullUrl;
+});
+
+const loadPdfMetadata = async (pdf) => {
+  if (pdf.loaded || pdf.loading) return;
+  
+  try {
+    pdf.loading = true;
+    const info = await chatService.getPdfInfo(customerId.value, pdf.name);
+    pdf.totalPages = info.pages || 1;
+    pdf.loaded = true;
+    pdf.loading = false;
+  } catch (error) {
+    console.error('Error loading PDF metadata:', error);
+    pdf.error = error.message;
+    pdf.loading = false;
+  }
+};
+
+
+const isSessionValid = computed(() => {
+  return sessionStore.validateSession();
+});
+
+// Add watcher for session validity
+watch(isSessionValid, (valid) => {
+  if (!valid) {
+    handleSessionExpiration();
+  }
 });
 
 // Enhanced initialize chat with session handling
+// Update only the part where we set customerInfo in your existing initializeChat method
+
+// Add this new method for async customer info loading
+const loadCustomerInfo = async (pdfFile) => {
+  try {
+    const infoQuery = `מתוך החשבונית, אנא ספק את:
+1. שם הלקוח המלא
+2. תכנית/מסלול החבילה
+השב בפורמט JSON בלבד עם השדות name ו-plan.`;
+
+    // Create properly formatted context
+    const context = [
+      {
+        type: 'system',
+        content: 'Analyzing customer bill'
+      }
+    ];
+
+    console.log('Requesting customer info with PDF:', pdfFile);
+    
+    const response = await chatService.sendMessage(
+      infoQuery,
+      customerId.value,
+      context,
+      pdfFile.path
+    );
+
+    console.log('Customer info response:', response);
+
+    if (response && response.response) {
+      try {
+        const extractedInfo = JSON.parse(response.response);
+        customerInfo.value = {
+          id: customerId.value,
+          name: extractedInfo.name || 'לא זוהה',
+          plan: extractedInfo.plan || 'לא זוהה'
+        };
+      } catch (parseError) {
+        console.error('Error parsing customer info:', parseError);
+        throw new Error('Error parsing customer data');
+      }
+    } else {
+      throw new Error('Invalid response format');
+    }
+
+  } catch (error) {
+    console.error('Error getting customer info:', error);
+    customerInfo.value = {
+      id: customerId.value,
+      name: 'לא זוהה',
+      plan: 'לא זוהה'
+    };
+  }
+};
+
+// Modified initializeChat method
 const initializeChat = async () => {
   try {
     isLoading.value = true;
     isLoadingPdf.value = true;
-    console.log('Starting chat initialization...')
-    console.log('Using customer ID:', customerId.value)
 
-    // Initialize session first
-    await sessionStore.initializeSession(customerId.value)
-
-    // Load PDFs with session token
-    const pdfResponse = await chatService.getPdfList(
-      customerId.value, 
-      await sessionStore.getSessionToken()
-    );
-    
-    console.log('Raw PDF response:', pdfResponse);
-
-    if (pdfResponse && pdfResponse.pdf_files && Array.isArray(pdfResponse.pdf_files)) {
-      if (pdfResponse.pdf_files.length === 0) {
-        console.warn('No PDFs available for customer:', customerId.value)
-        error.value = 'No billing documents available'
-      } else {
-        pdfFiles.value = pdfResponse.pdf_files
-        
-        // Set initial total pages if there are PDFs
-        if (pdfFiles.value.length > 0) {
-          const firstPdf = pdfFiles.value[0]
-          totalPages.value = firstPdf.pages || 1
-          console.log('Initial PDF loaded:', firstPdf)
-          console.log('Total pages:', totalPages.value)
-        }
-        console.log('Processed PDF files:', pdfFiles.value)
-      }
-    } else {
-      console.warn('Invalid PDF response structure:', pdfResponse)
-      throw new Error('Invalid PDF response structure')
-    }
-
-    // Set customer info from session
-    customerInfo.value = {
-      id: customerId.value,
-      name: await sessionStore.getCustomerName(),
-      plan: await sessionStore.getCustomerPlan()
-    };
-
-    // Add initial messages
+    // Initialize messages early for better UX
     messages.value = [
       {
         type: 'system',
@@ -99,19 +196,109 @@ const initializeChat = async () => {
       },
       {
         type: 'bot',
-        content: `שלום! אני בודק את חשבון החיוב שלך. כיצד אוכל לעזור?`
+        content: 'שלום! אני בודק את חשבון החיוב שלך. כיצד אוכל לעזור?'
       }
     ];
 
-    startSessionMonitoring();
+    // Set initial customer info state
+    customerInfo.value = {
+      id: customerId.value,
+      name: 'טוען...',
+      plan: 'טוען...'
+    };
+
+    // Get PDFs using chatService
+    const response = await chatService.getPdfList(customerId.value);
+    console.log('Raw PDF response:', response);
+
+    if (response?.pdf_files?.length) {
+      const processedPdfs = response.pdf_files.map(pdf => ({
+        ...pdf,
+        totalPages: pdf.pages || 1,
+        fullUrl: `http://127.0.0.1:8000${pdf.url}`,
+        loaded: false,
+        loading: false,
+        error: null
+      }));
+
+      console.log('Processed PDFs:', processedPdfs);
+      
+      pdfFiles.value = processedPdfs;
+      
+      if (processedPdfs.length > 0) {
+        const firstPdf = processedPdfs[0];
+        firstPdf.loading = true;
+
+        // Set initial PDF state immediately
+        totalPages.value = firstPdf.totalPages;
+        currentPage.value = 1;
+        scale.value = 1;
+
+        console.log('Initial PDF setup:', firstPdf);
+
+        // Start customer info loading in background
+        loadCustomerInfo(firstPdf)
+          .catch(error => {
+            console.warn('Customer info loading error:', error);
+            // Error already sets fallback values in loadCustomerInfo
+          })
+          .finally(() => {
+            // Mark PDF as loaded regardless of customer info success
+            firstPdf.loaded = true;
+            firstPdf.loading = false;
+          });
+
+        // Don't wait for customer info - mark PDF as ready
+        firstPdf.loaded = true;
+        firstPdf.loading = false;
+      }
+    } else {
+      console.warn('Invalid PDF response structure:', response);
+      throw new Error('Invalid PDF response structure');
+    }
   } catch (err) {
-    console.error('Initialization error:', err)
-    handleError(err);  // Changed from error.value assignment to using handleError
+    console.error('Initialization error:', err);
+    error.value = 'שגיאה בטעינת המסמכים. חלק מהתכונות עשויות שלא לעבוד.';
   } finally {
     isLoading.value = false;
     isLoadingPdf.value = false;
   }
 };
+
+
+const extractCustomerInfo = async (pdfText) => {
+  try {
+    const infoQuery = `אנא חלץ את הפרטים הבאים מהחשבונית:
+1. שם הלקוח המלא
+2. תכנית/מסלול החבילה
+השב בפורמט JSON בלבד עם השדות name ו-plan.
+דוגמה לפורמט הרצוי:
+{
+  "name": "שם הלקוח",
+  "plan": "שם התכנית"
+}`
+
+    const response = await chatService.sendMessage(
+      infoQuery,
+      customerId.value,
+      [],
+      pdfText,
+      await sessionStore.getSessionToken()
+    );
+
+    try {
+      const parsedInfo = JSON.parse(response.response);
+      return parsedInfo;
+    } catch (parseError) {
+      console.error('Error parsing customer info:', parseError);
+      return null;
+    }
+  } catch (error) {
+    console.error('Error extracting customer info:', error);
+    return null;
+  }
+};
+
 // Enhanced error handling
 const handleError = (err) => {
   console.error('Error:', err);
@@ -164,10 +351,13 @@ const updateActivity = () => {
 const sendMessage = async () => {
   if (!input.value.trim() || isLoading.value) return;
   
-  updateActivity();
   const messageText = input.value;
-  input.value = '';
+  input.value = ''; // Clear input immediately
 
+
+  
+
+  // Add user message
   messages.value.push({
     type: 'user',
     content: messageText
@@ -175,25 +365,57 @@ const sendMessage = async () => {
 
   try {
     isLoading.value = true;
-    
+
+    // Get current PDF context
     const currentPdf = pdfFiles.value[currentPdfIndex.value];
+    const pdfPath = currentPdf?.path || null;
+
+    // Format context properly
+    const recentContext = messages.value
+      .slice(-5)
+      .map(msg => ({
+        type: msg.type,
+        content: msg.content
+      }));
+
+    console.log('Sending to API with context:', {
+      messageText,
+      customerId: customerId.value,
+      pdfPath,
+      contextLength: recentContext.length
+    });
+
     const response = await chatService.sendMessage(
       messageText,
       customerId.value,
-      messages.value.slice(-5),
-      currentPdf?.path,
-      await sessionStore.getSessionToken()
+      recentContext,
+      pdfPath
     );
 
-    messages.value.push({
-      type: 'bot',
-      content: response.response
-    });
+
+
+    
+
+    console.log('Received response:', response);
+
+    if (response && response.response) {
+      messages.value.push({
+        type: 'bot',
+        content: response.response
+      });
+    } else {
+      throw new Error('Invalid response format');
+    }
+
+    // Update session activity
+    sessionStore.updateLastActivity();
+    updateSessionStorage();
+
   } catch (err) {
     console.error('Chat error:', err);
     messages.value.push({
       type: 'system',
-      content: 'Sorry, I encountered an error. Please try again.'
+      content: 'אירעה שגיאה בעיבוד ההודעה. אנא נסה שוב.'
     });
   } finally {
     isLoading.value = false;
@@ -202,30 +424,33 @@ const sendMessage = async () => {
 
 // Enhanced session timer with auto-refresh
 const startSessionTimer = () => {
-  let seconds = 0;
   setInterval(() => {
-    seconds++;
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    sessionTime.value = `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-    
-    // Refresh session if needed
-    if (minutes > 0 && minutes % 4 === 0 && remainingSeconds === 0) {
-      sessionStore.refreshSession();
+    if (sessionStore.isActive) {
+      const duration = sessionStore.sessionDuration;
+      sessionTime.value = duration;
+      sessionStore.updateLastActivity();
     }
   }, 1000);
 };
 
 // Cleanup
 onUnmounted(() => {
+  if (headerTimerInterval.value) {
+    clearInterval(headerTimerInterval.value);
+  }
   sessionStore.cleanup();
 });
 
 // Initialize
-onMounted(() => {
-  initializeChat();
-  startSessionTimer();
+onMounted(async () => {
+  await initializeChat();
+  startHeaderTimer();
+  updateSessionStorage();
+  
+  // Log initial session state
+  console.log('Initial session state:', sessionStore.getDebugState());
 });
+
 
 // Watch for session errors
 watch(() => sessionStore.sessionError, (newError) => {
@@ -234,17 +459,35 @@ watch(() => sessionStore.sessionError, (newError) => {
   }
 });
 
+watch(() => sessionStore.isActive, (active) => {
+  console.log('Session active state changed:', active);
+  if (!active) {
+    console.warn('Session is not active');
+  }
+});
+
 // Keeping your existing PDF control methods
 const onPdfRendered = async (e) => {
+  console.log('PDF rendered event:', e);
   if (e.pdf) {
     const numPages = e.pdf.numPages;
+    console.log(`PDF rendered successfully with ${numPages} pages`);
     totalPages.value = numPages;
-    if (pdfFiles.value[currentPdfIndex.value]) {
-      pdfFiles.value[currentPdfIndex.value].totalPages = numPages;
+    
+    // Update PDF metadata in store
+    const currentPdfsCopy = [...pdfFiles.value];
+    if (currentPdfsCopy[currentPdfIndex.value]) {
+      currentPdfsCopy[currentPdfIndex.value].totalPages = numPages;
+      sessionStore.setPdfFiles(currentPdfsCopy);
     }
-    console.log(`PDF rendered with ${numPages} pages`);
   }
 };
+
+watch(error, (newError) => {
+  if (newError) {
+    console.error('PDF Error occurred:', newError);
+  }
+});
 
 // Keeping your existing PDF navigation methods
 const navigatePdf = async (direction) => {
@@ -252,7 +495,15 @@ const navigatePdf = async (direction) => {
   if (newIndex >= 0 && newIndex < pdfFiles.value.length) {
     currentPdfIndex.value = newIndex;
     currentPage.value = 1;
-    totalPages.value = pdfFiles.value[newIndex].totalPages || 1;
+    
+    const nextPdf = pdfFiles.value[newIndex];
+    if (!nextPdf.loaded) {
+      isLoadingPdf.value = true;
+      await loadPdfMetadata(nextPdf);
+      isLoadingPdf.value = false;
+    }
+    
+    totalPages.value = nextPdf.totalPages || 1;
     console.log(`Switched to PDF ${newIndex} with ${totalPages.value} pages`);
   }
 };
@@ -370,17 +621,23 @@ const previousPage = () => {
             :source="currentPdfUrl"
             :page="currentPage"
             @rendered="onPdfRendered"
-            @error="error => console.error('PDF Error:', error)"
+            @error="(error) => {
+            console.error('PDF Error:', error);
+            error = 'Error loading PDF document';
+          }"
             :style="{
               transform: `scale(${scale})`,
               transformOrigin: 'top left'
             }"
+            
           />
         </div>
         
         <div v-else class="flex items-center justify-center h-full">
-          <i class="fas fa-file-text w-16 h-16 text-gray-400"></i>
-          <p class="text-gray-500 ml-2">No billing document available</p>
+          <div class="text-center">
+            <i class="fas fa-file-text text-4xl text-gray-400 mb-2"></i>
+            <p class="text-gray-500">{{ error || 'No billing document available' }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -394,10 +651,12 @@ const previousPage = () => {
             <h2 class="text-lg font-semibold">
               Customer #{{ customerInfo?.id || customerId }}
             </h2>
-            <p class="text-sm text-gray-500">
-              {{ customerInfo?.name || 'Loading...' }} •
-              {{ customerInfo?.plan || 'Standard Plan' }}
-            </p>
+      <p class="text-sm text-gray-500">
+        <span v-if="customerInfo?.name">
+          {{ customerInfo.name }} • {{ customerInfo.plan || 'Standard Plan' }}
+        </span>
+        <span v-else>Loading...</span>
+      </p>
           </div>
           <div class="flex items-center space-x-2 text-sm text-gray-500">
             <i class="fas fa-clock w-4 h-4"></i>

@@ -6,15 +6,13 @@ import router from './router'
 import './assets/main.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 
-// Create the app instance
-const app = createApp(App)
+console.log('Main.js executing')
+console.log('Routes:', router.getRoutes())
 
-// Create the Pinia instance
+const app = createApp(App)
 const pinia = createPinia()
 
-// Use plugins
-app.use(pinia)  // Changed from app.use(createPinia())
+app.use(pinia)
 app.use(router)
 
-// Mount the app
 app.mount('#app')
