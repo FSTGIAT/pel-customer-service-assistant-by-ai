@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     DB_HOST: str = "localhost"
     DB_PORT: int = 5432
     DB_USER: str = "telecom_user"
-    DB_PASSWORD: str = "telecom123"
+    DB_PASSWORD: str
     DB_NAME: str = "telecom_qa"
     
     # Database connection settings
@@ -36,6 +36,6 @@ class Settings(BaseSettings):
     
     class Config:
         env_file = ".env"
-        #case_sensitive = True
+        case_sensitive = True
 
 settings = Settings()

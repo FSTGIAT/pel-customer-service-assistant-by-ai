@@ -3,6 +3,7 @@ from dataclasses import dataclass
 import re
 import json
 from app.utils.custom_logger import logger
+from .bill_text_processor import enhance_bill_processor
 
 @dataclass
 class BillSection:
@@ -827,7 +828,11 @@ class TelecomQueryProcessor:
 
 
 # Create instances
-bill_processor = TelecomBillProcessor()
+#bill_processor = TelecomBillProcessor()
+#query_processor = TelecomQueryProcessor()
+
+base_processor = TelecomBillProcessor()
+bill_processor = enhance_bill_processor(base_processor)
 query_processor = TelecomQueryProcessor()
 
 # Export both instances

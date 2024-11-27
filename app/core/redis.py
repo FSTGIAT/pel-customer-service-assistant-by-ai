@@ -8,9 +8,9 @@ from typing import Optional, Any
 class RedisClient:
     def __init__(self):
         self.redis_client = redis.Redis(
-            host=settings.REDIS_HOST,
-            port=settings.REDIS_PORT,
-            db=settings.REDIS_DB,
+            host=settings.REDIS_SESSION_HOST,  # Using your existing session settings
+            port=settings.REDIS_SESSION_PORT,
+            db=settings.REDIS_SESSION_DB,
             decode_responses=True
         )
 
@@ -21,12 +21,20 @@ class RedisClient:
     async def set(self, key: str, value: str, ttl: int = None) -> bool:
         """Set value in Redis with optional TTL."""
         if ttl is None:
-            ttl = settings.REDIS_TTL
+            ttl = settings.SESSION_TIMEOUT
         return self.redis_client.setex(key, ttl, value)
 
     async def delete(self, key: str) -> bool:
         """Delete key from Redis."""
         return self.redis_client.delete(key)
+
+    async def incr(self, key: str) -> int:
+        """Increment value for rate limiting."""
+        return self.redis_client.incr(key)
+
+    async def expire(self, key: str, seconds: int) -> bool:
+        """Set expiry on key."""
+        return self.redis_client.expire(key, seconds)
 
 # Create Redis client instance
 redis_client = RedisClient()
