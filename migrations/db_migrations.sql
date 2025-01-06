@@ -40,3 +40,29 @@ BEGIN
     WHERE created_at < NOW() - INTERVAL '7 days';
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE TABLE IF NOT EXISTS telecom.rate_limit_metrics (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    customer_id VARCHAR(20) NOT NULL,
+    queue_length INTEGER NOT NULL,
+    rate_limited_requests INTEGER NOT NULL,
+    token_usage INTEGER NOT NULL,
+    avg_response_time FLOAT NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES telecom.customers(id)
+);
+
+-- Create index for efficient querying
+CREATE INDEX IF NOT EXISTS idx_rate_limit_metrics_customer_id 
+    ON telecom.rate_limit_metrics(customer_id);
+CREATE INDEX IF NOT EXISTS idx_rate_limit_metrics_created_at 
+    ON telecom.rate_limit_metrics(created_at);
+
+-- Create cleanup function for old metrics
+CREATE OR REPLACE FUNCTION telecom.cleanup_old_metrics() 
+RETURNS void AS $$
+BEGIN
+    DELETE FROM telecom.rate_limit_metrics 
+    WHERE created_at < NOW() - INTERVAL '7 days';
+END;
+$$ LANGUAGE plpgsql;

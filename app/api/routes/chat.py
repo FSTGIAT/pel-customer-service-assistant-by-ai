@@ -15,6 +15,9 @@ import json
 import hashlib
 from app.core.redis import redis_client
 import aioredis
+from app.services.monitoring.metrics_service import metrics_service, RateLimitMetrics
+
+
 
 
 router = APIRouter()
@@ -86,6 +89,21 @@ async def get_pdf_id_from_path(file_path: str) -> Optional[UUID]:
 
 @router.post("/chat")
 async def chat(request: ChatRequest, req: Request):
+    start_time = datetime.utcnow()
+    post_tokens = None
+    pre_tokens = None
+    metrics_data = {
+        "queue_length": 0,
+        "response_time": 0,
+        "token_usage": 0,
+        "cache_used": False
+    }
+    token_usage = 0
+    response = None
+    pre_tokens_value = 0
+    post_tokens_value = 0
+
+
     try:
         # session handling
         logger.info(f"Request state: {vars(req.state)}")
@@ -103,14 +121,39 @@ async def chat(request: ChatRequest, req: Request):
             }
             logger.info(f"Created temporary session: {session}")
 
+        try:
+            initial_metrics = await metrics_service.get_rate_limit_metrics(request.customerId)
+            metrics_data["queue_length"] = initial_metrics.queue_length
+        except Exception as e:
+            logger.error(f"Error getting initial metrics: {e}")
+            initial_metrics = RateLimitMetrics(0, 0, 0, 0.0)        
+
+        start_time = datetime.utcnow()
+        metrics_data = {
+            "queue_length": initial_metrics.queue_length,
+            "response_time": 0,
+            "token_usage": 0,
+            "cache_used": False
+        }
+
         # Add rate limit check
         rate_limit_key = f"rate_limit:{request.customerId}"
         current_requests = await redis_client.get(rate_limit_key)
         if current_requests and int(current_requests) >= 5:  # 5 requests per minute
+            await metrics_service.store_metrics_in_db(
+                request.customerId,
+                RateLimitMetrics(
+                    queue_length=initial_metrics.queue_length,
+                    rate_limited_requests=initial_metrics.rate_limited_requests + 1,
+                    token_usage=initial_metrics.token_usage,
+                    avg_response_time=initial_metrics.avg_response_time
+                )
+            )
             raise HTTPException(
                 status_code=429, 
                 detail="Rate limit exceeded. Please wait before sending more requests."
             )
+
         await redis_client.incr(rate_limit_key)
         await redis_client.expire(rate_limit_key, 60)  # 1 minute window
 
@@ -140,7 +183,6 @@ async def chat(request: ChatRequest, req: Request):
             if pdf_text:
                 bill_section = f"=== חשבונית {pdf.date.strftime('%d/%m/%Y')} ===\n{pdf_text}"
                 combined_text.append(bill_section)
-
 
         table_instructions = """
 בהצגת השוואה בין חשבוניות, אנא השתמש בפורמט הבא:
@@ -177,12 +219,16 @@ async def chat(request: ChatRequest, req: Request):
 {chr(10).join(combined_text)}
 """
 
-
         # Check cache before saving user message
         cache_key = f"chat_cache:{hashlib.sha256(f'{request.message}:{request.customerId}'.encode()).hexdigest()}"
         cached_response = await redis_client.get(cache_key)
         is_cache_hit = bool(cached_response)
-
+        metrics_data = {
+            "queue_length": initial_metrics.queue_length if initial_metrics else 0,
+            "response_time": 0,
+            "token_usage": 0,
+            "cache_used": is_cache_hit
+        }
         try:
             user_message = ChatMessage(
                 session_id=session['id'],
@@ -200,18 +246,75 @@ async def chat(request: ChatRequest, req: Request):
         except Exception as e:
             logger.error(f"Failed to save user message: {e}", exc_info=True)
 
+        queue_metrics = await metrics_service.get_queue_metrics()
+
         # Get response from cache or Claude
         if cached_response:
             logger.info("Using cached response")
             response = json.loads(cached_response)
+            end_time = datetime.utcnow()
+            # Update metrics for cached response
+            metrics_data.update({
+                "response_time": (datetime.utcnow() - start_time).total_seconds(),
+                "token_usage": 0  # No token usage for cached responses
+                
+            })
         else:
-            response = await claude_service.get_response(
-                message=enhanced_message,
-                pdf_content=chr(10).join(combined_text)
-            )
+            token_usage = 0
+            try:
+                # Get token usage before API call
+                pre_tokens_result = await metrics_service.get_token_usage(request.customerId)
+                pre_tokens_value = pre_tokens_result.used if pre_tokens_result else 0
+                logger.debug(f"Pre-tokens value: {pre_tokens_value}")
+
+
+                response = await claude_service.get_response(
+                    message=enhanced_message,
+                    customer_id=request.customerId,
+                    pdf_content=chr(10).join(combined_text),
+                    context=request.context
+                )
+
+                post_tokens_result = await metrics_service.get_token_usage(request.customerId)
+                post_tokens_value = post_tokens_result.used if post_tokens_result else pre_tokens_value
+                logger.debug(f"Post-tokens value: {post_tokens_value}")
+                
+                # Calculate token usage safely
+                token_usage = max(0, post_tokens_value - pre_tokens_value)
+                logger.debug(f"Calculated token usage: {token_usage}")
+
+                end_time = datetime.utcnow()
+                response_time = (end_time - start_time).total_seconds()
+                metrics_data.update({
+                    "response_time": response_time,
+                    "token_usage": token_usage,
+                    "cache_used": False
+                })
+                await redis_client.set(cache_key, json.dumps(response))
+                await redis_client.expire(cache_key, 3600)  # 1 hour TTL
             # Cache the response
-            await redis_client.set(cache_key, json.dumps(response))
-            await redis_client.expire(cache_key, 3600)  # Set TTL to 1 hour
+            except Exception as e:
+                logger.error(f"Error caching response: {e}")
+                end_time = datetime.utcnow()
+                metrics_data.update({
+                    "response_time": (end_time - start_time).total_seconds(),
+                    "token_usage": 0,
+                    "cache_used": False
+                })
+
+        try:
+            queue_metrics = await metrics_service.get_queue_metrics()
+            await metrics_service.store_metrics_in_db(
+                request.customerId,
+                RateLimitMetrics(
+                    queue_length=queue_metrics.total_queued,
+                    rate_limited_requests=initial_metrics.rate_limited_requests if initial_metrics else 0,
+                    token_usage=metrics_data["token_usage"],
+                    avg_response_time=metrics_data["response_time"]
+                )
+            )
+        except Exception as e:
+            logger.error(f"Error storing metrics: {e}")
 
         # Save bot response
         try:
@@ -231,20 +334,35 @@ async def chat(request: ChatRequest, req: Request):
         except Exception as e:
             logger.error(f"Failed to save bot response: {e}", exc_info=True)
 
+
+
         return {
             "response": response,
             "status": "success",
             "bills_analyzed": len(combined_text),
             "session_id": str(session['id']),
             "pdf_id": str(current_pdf_id) if current_pdf_id else None,
-            "cache_hit": is_cache_hit
+            "cache_hit": is_cache_hit,
+            "metrics": metrics_data
         }
 
     except Exception as e:
         logger.error(f"Error in chat endpoint: {str(e)}")
+        # Try to store error metrics if possible
+        try:
+            await metrics_service.store_metrics_in_db(
+                request.customerId,
+                RateLimitMetrics(
+                    queue_length=metrics_data.get("queue_length", 0),
+                    rate_limited_requests=0,
+                    token_usage=0,
+                    avg_response_time=-1  # Indicate error
+                )
+            )
+        except Exception as metrics_error:
+            logger.error(f"Error storing error metrics: {metrics_error}")
+
         raise HTTPException(status_code=500, detail=str(e))
-
-
 @router.get("/bill-info/{customer_id}")
 async def get_bill_info(request: Request, customer_id: str):
     """Get processed bill information"""
@@ -305,3 +423,31 @@ async def analyze_bill(request: Request, customer_id: str, query: Optional[str] 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@router.get("/metrics/{customer_id}")
+async def get_customer_metrics(customer_id: str):
+    try:
+        metrics = await metrics_service.get_rate_limit_metrics(customer_id)
+        queue_metrics = await metrics_service.get_queue_metrics()
+        token_usage = await metrics_service.get_token_usage(customer_id)
+        
+        return {
+            "rate_limit_metrics": {
+                "queue_length": metrics.queue_length,
+                "rate_limited_requests": metrics.rate_limited_requests,
+                "token_usage": metrics.token_usage,
+                "avg_response_time": metrics.avg_response_time
+            },
+            "queue_metrics": {
+                "total_queued": queue_metrics.total_queued,
+                "pending_requests": queue_metrics.pending_requests,
+                "avg_wait_time": queue_metrics.avg_wait_time
+            },
+            "token_usage": {
+                "used": token_usage.used,
+                "remaining": token_usage.remaining,
+                "reset_time": token_usage.reset_time.isoformat()
+            }
+        }
+    except Exception as e:
+        logger.error(f"Error fetching metrics: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))

@@ -6,7 +6,10 @@ from app.api.routes import customer, chat, legacy_trigger
 from app.core.database import db
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from app.jobs.cleanup import setup_cleanup_jobs
+from app.services.rate_limiting.service import rate_limit_service
+from app.services.claude_service import create_claude_service
 import logging
+from app.api.routes import websocket
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -118,10 +121,22 @@ async def health_check():
         "scheduler": "up" if scheduler_healthy else "down"
     }
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    claude_service = create_claude_service(rate_limit_service)
+    queue_processor = asyncio.create_task(
+        rate_limit_service.process_claude_queue()
+    )
+    try:
+        yield
+    finally:
+        queue_processor.cancel()
+
 # Include routers
 app.include_router(customer.router, prefix="/api")
 app.include_router(chat.router, prefix="/api")
 app.include_router(legacy_trigger.router, prefix="/api")
+app.include_router(websocket.router)
 
 @app.get("/")
 async def root():

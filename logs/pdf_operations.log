@@ -6833,3 +6833,861 @@ DETAIL:  Key (content_hash)=(d50871cde239c434f907482152e303f900d2b2ffaf71b4bcf43
 2024-11-27 15:27:14,674 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
 2024-11-27 15:29:12,780 - INFO - Searching PDFs for customer: 3694388
 2024-11-27 15:29:13,281 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 10:05:54,794 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 10:05:55,406 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 10:28:02,921 - INFO - Logging initialized
+2024-12-01 10:28:02,921 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 14:17:27,898 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 17:04:49,207 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 17:04:51,269 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 17:05:27,739 - INFO - Logging initialized
+2024-12-01 17:05:27,740 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 17:06:14,949 - INFO - Logging initialized
+2024-12-01 17:06:14,949 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 19:43:51,692 - INFO - Logging initialized
+2024-12-01 19:43:51,693 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 19:52:20,743 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 19:52:21,388 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 19:52:25,386 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 19:52:32,988 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 19:53:00,441 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 19:53:00,880 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 19:53:03,316 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 19:59:49,958 - INFO - Logging initialized
+2024-12-01 19:59:49,958 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 19:59:55,727 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 19:59:56,284 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 19:59:58,665 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:03:21,739 - INFO - Logging initialized
+2024-12-01 20:03:21,740 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:03:29,157 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:03:29,720 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:03:31,608 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:03:47,614 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:05:49,724 - INFO - Logging initialized
+2024-12-01 20:05:49,724 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:05:54,062 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:05:54,654 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:05:56,303 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:12:02,168 - INFO - Logging initialized
+2024-12-01 20:12:02,169 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:12:06,486 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:12:06,953 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:12:08,340 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:12:26,159 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:12:36,479 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:13:00,799 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:13:40,990 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:18:28,504 - INFO - Logging initialized
+2024-12-01 20:18:28,505 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:20:51,704 - INFO - Logging initialized
+2024-12-01 20:20:51,704 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:20:56,836 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:20:57,277 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:21:00,795 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:21:21,122 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:22:19,970 - INFO - Logging initialized
+2024-12-01 20:22:19,970 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:25:27,095 - INFO - Logging initialized
+2024-12-01 20:25:27,096 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:25:34,983 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:25:35,429 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:25:37,639 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:25:48,884 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:25:56,959 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:26:01,539 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:28:25,638 - INFO - Logging initialized
+2024-12-01 20:28:25,639 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:28:48,438 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:28:48,918 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:28:50,969 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:33:15,053 - INFO - Logging initialized
+2024-12-01 20:33:15,053 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:33:20,542 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:33:20,986 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:33:27,270 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:33:32,486 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:33:44,525 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:35:59,663 - INFO - Logging initialized
+2024-12-01 20:35:59,663 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:38:17,866 - INFO - Logging initialized
+2024-12-01 20:38:17,866 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:38:24,434 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:38:24,870 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:38:34,355 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:42:39,659 - INFO - Logging initialized
+2024-12-01 20:42:39,660 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:43:13,759 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:43:14,321 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:43:16,437 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:43:59,656 - INFO - Logging initialized
+2024-12-01 20:43:59,657 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:44:07,167 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:44:07,615 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:44:09,234 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:45:14,640 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:45:15,216 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:45:18,016 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:45:34,366 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:46:25,437 - INFO - Logging initialized
+2024-12-01 20:46:25,438 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:46:30,899 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:46:31,384 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:46:36,413 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:47:22,943 - INFO - Logging initialized
+2024-12-01 20:47:22,943 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:47:25,293 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:47:53,214 - INFO - Logging initialized
+2024-12-01 20:47:53,215 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:47:58,872 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:47:59,301 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:48:00,979 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:48:16,517 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:49:27,793 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:50:31,623 - INFO - Logging initialized
+2024-12-01 20:50:31,624 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:50:38,176 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:50:38,659 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:50:40,000 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:51:27,038 - INFO - Logging initialized
+2024-12-01 20:51:27,039 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:51:28,979 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:51:29,371 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:51:33,357 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:52:06,615 - INFO - Logging initialized
+2024-12-01 20:52:06,615 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:52:12,109 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:52:12,606 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:52:27,110 - INFO - Logging initialized
+2024-12-01 20:52:27,110 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:52:31,356 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:52:42,564 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:53:03,228 - INFO - Logging initialized
+2024-12-01 20:53:03,229 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:53:10,953 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:54:28,954 - INFO - Logging initialized
+2024-12-01 20:54:28,954 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:54:32,268 - INFO - Logging initialized
+2024-12-01 20:54:32,269 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:54:38,463 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:54:38,946 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:54:41,119 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:54:57,204 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:55:01,125 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:55:07,496 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:57:40,864 - INFO - Logging initialized
+2024-12-01 20:57:40,865 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:57:46,628 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:57:52,180 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:57:52,689 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:57:54,346 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:59:30,552 - INFO - Logging initialized
+2024-12-01 20:59:30,553 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:59:34,233 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:59:34,673 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:59:36,235 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:59:51,859 - INFO - Logging initialized
+2024-12-01 20:59:51,859 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 20:59:53,247 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:59:53,638 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 20:59:55,261 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:00:04,144 - INFO - Logging initialized
+2024-12-01 21:00:04,144 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:00:18,620 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:00:19,223 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:00:25,469 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:00:38,090 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:02:06,953 - INFO - Logging initialized
+2024-12-01 21:02:06,953 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:02:08,316 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:02:08,816 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:02:17,543 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:02:18,142 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:02:23,247 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:03:35,249 - INFO - Logging initialized
+2024-12-01 21:03:35,250 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:03:39,476 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:03:39,910 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:03:42,773 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:03:49,117 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:03:49,569 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:03:54,877 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:05:00,944 - INFO - Logging initialized
+2024-12-01 21:05:00,944 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:05:04,576 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:05:05,010 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:05:06,851 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:07:27,318 - INFO - Logging initialized
+2024-12-01 21:07:27,318 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:07:46,847 - INFO - Logging initialized
+2024-12-01 21:07:46,848 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:07:48,037 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:07:48,480 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:09:25,216 - INFO - Logging initialized
+2024-12-01 21:09:25,216 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:09:34,527 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:09:34,989 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:09:37,902 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:09:44,568 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:09:44,965 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:09:51,329 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:10:38,184 - INFO - Logging initialized
+2024-12-01 21:10:38,185 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:10:42,722 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:13:25,362 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:15:02,430 - INFO - Logging initialized
+2024-12-01 21:15:02,431 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:15:04,746 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:15:05,344 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:15:12,412 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:15:12,800 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:15:14,940 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:15:24,039 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:16:26,513 - INFO - Logging initialized
+2024-12-01 21:16:26,513 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:16:29,438 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:16:29,960 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:16:32,068 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:16:43,044 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:16:48,732 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:17:19,313 - INFO - Logging initialized
+2024-12-01 21:17:19,313 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:17:24,602 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:17:25,002 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:17:37,133 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:17:56,231 - INFO - Logging initialized
+2024-12-01 21:17:56,231 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:18:00,048 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:20:47,309 - INFO - Logging initialized
+2024-12-01 21:20:47,310 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:20:51,642 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:20:52,082 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:20:53,701 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:20:59,187 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:20:59,674 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:21:01,119 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:21:58,600 - INFO - Logging initialized
+2024-12-01 21:21:58,601 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:24:28,745 - INFO - Logging initialized
+2024-12-01 21:24:28,746 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:24:38,236 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:24:38,673 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:24:40,978 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:24:54,685 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:33:42,170 - INFO - Logging initialized
+2024-12-01 21:33:42,171 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:33:49,849 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:33:50,373 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:34:00,785 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:34:32,886 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:34:33,352 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:34:48,167 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:35:16,884 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:35:24,104 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:35:30,734 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:35:54,580 - INFO - Logging initialized
+2024-12-01 21:35:54,581 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:36:02,427 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:36:02,873 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:36:05,913 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:36:20,024 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:37:03,452 - INFO - Logging initialized
+2024-12-01 21:37:03,453 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:37:13,111 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:37:13,562 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:37:21,201 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:37:22,380 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:38:44,831 - INFO - Logging initialized
+2024-12-01 21:38:44,832 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:38:50,796 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:38:51,260 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:38:56,544 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:40:14,929 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:40:15,597 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:40:17,785 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:40:26,859 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:40:33,512 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:43:17,961 - INFO - Logging initialized
+2024-12-01 21:43:17,961 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:43:31,695 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:43:32,174 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:43:34,713 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:43:41,787 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:43:47,432 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:44:14,722 - INFO - Logging initialized
+2024-12-01 21:44:14,723 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-01 21:45:11,792 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:45:12,250 - INFO - Searching PDFs for customer: 3694388
+2024-12-01 21:45:17,333 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:15:29,064 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:15:30,800 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:18:26,669 - INFO - Logging initialized
+2024-12-02 06:18:26,669 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 06:20:29,216 - INFO - Logging initialized
+2024-12-02 06:20:29,217 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 06:20:34,834 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:20:35,279 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:20:37,675 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:21:03,313 - INFO - Logging initialized
+2024-12-02 06:21:03,314 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 06:21:11,737 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:21:12,205 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:21:14,389 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:29:03,385 - INFO - Logging initialized
+2024-12-02 06:29:03,385 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 06:34:57,657 - INFO - Logging initialized
+2024-12-02 06:34:57,658 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 06:35:13,401 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:38:39,487 - INFO - Logging initialized
+2024-12-02 06:38:39,488 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 06:38:46,968 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:38:47,494 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:38:50,027 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:39:14,615 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:39:19,719 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:39:20,116 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:39:22,571 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:40:23,103 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:46:11,197 - INFO - Logging initialized
+2024-12-02 06:46:11,198 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 06:48:32,544 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:48:33,111 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:48:35,700 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:48:42,321 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:51:43,890 - INFO - Logging initialized
+2024-12-02 06:51:43,890 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 06:52:04,395 - INFO - Logging initialized
+2024-12-02 06:52:04,397 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 06:52:46,159 - INFO - Logging initialized
+2024-12-02 06:52:46,160 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 06:52:53,224 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:52:53,739 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:52:55,831 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 06:53:06,665 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:17:46,691 - INFO - Logging initialized
+2024-12-02 10:17:46,692 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 10:17:53,297 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:17:53,971 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:17:56,779 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:24:09,670 - INFO - Logging initialized
+2024-12-02 10:24:09,670 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 10:24:15,168 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:24:15,688 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:24:17,951 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:24:25,310 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:26:34,232 - INFO - Logging initialized
+2024-12-02 10:26:34,232 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 10:27:04,178 - INFO - Logging initialized
+2024-12-02 10:27:04,178 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 10:27:08,123 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:27:08,542 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:27:10,822 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:27:16,926 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:27:22,585 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:29:09,340 - INFO - Logging initialized
+2024-12-02 10:29:09,340 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 10:30:03,175 - INFO - Logging initialized
+2024-12-02 10:30:03,176 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 10:30:45,591 - INFO - Logging initialized
+2024-12-02 10:30:45,591 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 10:30:53,457 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:30:53,952 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:30:55,887 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:31:01,074 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:34:22,220 - INFO - Logging initialized
+2024-12-02 10:34:22,221 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 10:37:36,912 - INFO - Logging initialized
+2024-12-02 10:37:36,913 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 10:37:42,249 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:37:42,698 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:37:45,095 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:37:53,425 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:37:59,611 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:44:13,451 - INFO - Logging initialized
+2024-12-02 10:44:13,452 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 10:44:21,485 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:44:21,939 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:44:23,752 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:50:59,225 - INFO - Logging initialized
+2024-12-02 10:50:59,226 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 10:51:05,449 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:51:05,907 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:51:08,961 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:51:14,705 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:58:31,798 - INFO - Logging initialized
+2024-12-02 10:58:31,798 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 10:58:38,404 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:58:38,994 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 10:58:40,836 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:00:17,465 - INFO - Logging initialized
+2024-12-02 11:00:17,465 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 11:00:23,803 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:00:24,267 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:00:26,116 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:03:48,298 - INFO - Logging initialized
+2024-12-02 11:03:48,298 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 11:03:49,965 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:03:50,398 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:03:51,763 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:03:59,302 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:07:05,827 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:07:06,344 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:07:55,409 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:12:29,559 - INFO - Logging initialized
+2024-12-02 11:12:29,559 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 11:12:36,661 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:12:37,194 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:13:15,841 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:13:16,398 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:15:52,392 - INFO - Logging initialized
+2024-12-02 11:15:52,393 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 11:15:58,978 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:15:59,737 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:16:05,977 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:26:31,686 - INFO - Logging initialized
+2024-12-02 11:26:31,686 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 11:26:38,599 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:26:39,294 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:29:23,032 - INFO - Logging initialized
+2024-12-02 11:29:23,032 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 11:29:28,839 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:29:29,321 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:36:19,312 - INFO - Logging initialized
+2024-12-02 11:36:19,313 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 11:36:30,236 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:36:30,813 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:36:37,937 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:36:51,106 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:42:52,291 - INFO - Logging initialized
+2024-12-02 11:42:52,292 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 11:43:00,621 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:43:01,258 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:43:05,688 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:43:44,397 - INFO - Logging initialized
+2024-12-02 11:43:44,398 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 11:43:51,150 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:43:51,717 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:43:53,650 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:58:44,233 - INFO - Logging initialized
+2024-12-02 11:58:44,233 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 11:58:53,427 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:58:53,985 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:58:57,050 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 11:59:14,119 - INFO - Logging initialized
+2024-12-02 11:59:14,121 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 12:10:42,377 - INFO - Logging initialized
+2024-12-02 12:10:42,378 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 12:12:12,698 - INFO - Logging initialized
+2024-12-02 12:12:12,699 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 12:12:17,032 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:12:17,564 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:13:52,238 - INFO - Logging initialized
+2024-12-02 12:13:52,239 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 12:14:07,793 - INFO - Logging initialized
+2024-12-02 12:14:07,793 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 12:15:12,763 - INFO - Logging initialized
+2024-12-02 12:15:12,763 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 12:15:13,773 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:15:37,640 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:15:38,021 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:15:42,269 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:18:04,680 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:18:30,056 - INFO - Logging initialized
+2024-12-02 12:18:30,056 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 12:18:35,599 - INFO - Logging initialized
+2024-12-02 12:18:35,600 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 12:18:41,200 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:18:41,700 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:18:44,470 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:19:13,369 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:24:35,782 - INFO - Logging initialized
+2024-12-02 12:24:35,782 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-02 12:24:50,807 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:24:51,311 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:24:53,982 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:25:05,608 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:25:14,424 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:38:02,308 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:38:34,296 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 12:38:34,810 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 18:43:38,252 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 18:43:38,895 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 18:43:49,421 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 18:47:05,895 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 18:47:06,317 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 18:47:12,381 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 18:47:15,748 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 18:48:46,824 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 18:48:47,234 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 18:49:08,069 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 18:49:09,044 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:18:50,861 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:18:51,412 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:18:51,938 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:18:54,239 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:24:20,117 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:24:20,638 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:30:07,767 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:30:08,344 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:30:20,438 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:30:20,878 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:30:31,556 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:30:31,973 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:30:57,040 - INFO - Searching PDFs for customer: 3694388
+2024-12-02 19:30:57,523 - INFO - Searching PDFs for customer: 3694388
+2024-12-10 11:40:10,061 - INFO - Searching PDFs for customer: 3694388
+2024-12-10 11:40:10,965 - INFO - Searching PDFs for customer: 3694388
+2024-12-10 11:40:43,820 - INFO - Searching PDFs for customer: 3694388
+2024-12-10 11:41:21,801 - INFO - Searching PDFs for customer: 3694388
+2024-12-10 11:41:41,050 - INFO - Searching PDFs for customer: 3694388
+2024-12-10 11:42:21,417 - INFO - Searching PDFs for customer: 3694388
+2024-12-10 11:42:23,697 - INFO - Searching PDFs for customer: 3694388
+2024-12-10 11:43:28,623 - INFO - Searching PDFs for customer: 3694388
+2024-12-10 11:43:29,599 - INFO - Searching PDFs for customer: 3694388
+2024-12-10 11:43:38,423 - INFO - Searching PDFs for customer: 3694388
+2024-12-10 11:44:16,659 - INFO - Searching PDFs for customer: 3694388
+2024-12-10 11:45:15,893 - INFO - Searching PDFs for customer: 3694388
+2024-12-11 14:30:49,664 - INFO - Searching PDFs for customer: 3694388
+2024-12-11 14:30:50,206 - INFO - Searching PDFs for customer: 3694388
+2024-12-12 17:05:56,077 - INFO - Logging initialized
+2024-12-12 17:05:56,077 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-12 17:06:15,122 - INFO - Logging initialized
+2024-12-12 17:06:15,123 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-12 17:22:31,157 - INFO - Searching PDFs for customer: 3694388
+2024-12-12 17:22:31,665 - INFO - Searching PDFs for customer: 3694388
+2024-12-12 17:22:54,494 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:00:02,952 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:00:05,345 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:03:23,481 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:03:24,096 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:03:31,995 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:04:50,542 - ERROR - Error getting PDF metadata: object tuple can't be used in 'await' expression
+2024-12-17 15:11:46,769 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:11:47,684 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:12:37,803 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:13:17,152 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:14:00,453 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:15:21,732 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:24:46,744 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:24:47,806 - INFO - Searching PDFs for customer: 3694388
+2024-12-17 15:24:56,426 - ERROR - Error getting PDF metadata: object tuple can't be used in 'await' expression
+2024-12-22 10:40:42,496 - INFO - Searching PDFs for customer: 3694388
+2024-12-22 10:40:45,199 - INFO - Searching PDFs for customer: 3694388
+2024-12-22 11:05:13,179 - INFO - Searching PDFs for customer: 3694388
+2024-12-22 11:05:15,127 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 10:49:42,663 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 10:49:43,466 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 10:50:04,297 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 11:57:27,518 - INFO - Logging initialized
+2024-12-23 11:57:27,518 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 11:59:17,936 - INFO - Logging initialized
+2024-12-23 11:59:17,936 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 12:02:46,518 - INFO - Logging initialized
+2024-12-23 12:02:46,519 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 12:03:48,256 - INFO - Logging initialized
+2024-12-23 12:03:48,256 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 12:04:21,519 - INFO - Logging initialized
+2024-12-23 12:04:21,519 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 12:05:04,926 - INFO - Logging initialized
+2024-12-23 12:05:04,926 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 12:06:54,448 - INFO - Logging initialized
+2024-12-23 12:06:54,450 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 12:22:56,935 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 12:22:57,847 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 12:43:00,421 - INFO - Logging initialized
+2024-12-23 12:43:00,421 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 12:43:11,013 - INFO - Logging initialized
+2024-12-23 12:43:11,013 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 12:43:41,087 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 12:43:41,571 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 12:44:00,976 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 12:44:01,432 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 13:17:41,101 - INFO - Logging initialized
+2024-12-23 13:17:41,101 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 13:20:44,436 - INFO - Logging initialized
+2024-12-23 13:20:44,438 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 13:20:53,339 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 13:20:53,888 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 13:22:14,207 - INFO - Logging initialized
+2024-12-23 13:22:14,207 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 13:25:34,501 - INFO - Logging initialized
+2024-12-23 13:25:34,502 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 13:25:42,521 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 13:25:43,002 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 13:51:15,333 - INFO - Logging initialized
+2024-12-23 13:51:15,334 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 13:52:50,269 - INFO - Logging initialized
+2024-12-23 13:52:50,270 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 13:54:17,934 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 13:54:18,969 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 14:44:59,415 - INFO - Logging initialized
+2024-12-23 14:44:59,415 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 14:45:12,662 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 14:45:13,281 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 14:45:14,636 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 14:45:15,566 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:00:29,587 - INFO - Logging initialized
+2024-12-23 15:00:29,587 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 15:00:37,677 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:00:38,186 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:03:02,778 - INFO - Logging initialized
+2024-12-23 15:03:02,779 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 15:03:08,267 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:03:09,266 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:40:46,753 - INFO - Logging initialized
+2024-12-23 15:40:46,754 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 15:40:54,823 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:40:56,400 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:42:56,436 - INFO - Logging initialized
+2024-12-23 15:42:56,437 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 15:48:54,534 - INFO - Logging initialized
+2024-12-23 15:48:54,535 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 15:49:02,305 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:49:02,886 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:53:02,167 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:53:02,769 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:53:14,845 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:53:15,222 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:53:24,660 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:53:25,100 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:53:30,422 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 15:53:30,829 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:02:22,018 - INFO - Logging initialized
+2024-12-23 16:02:22,018 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 16:02:28,253 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:02:28,980 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:04:54,642 - INFO - Logging initialized
+2024-12-23 16:04:54,643 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 16:05:00,484 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:05:01,029 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:08:48,439 - INFO - Logging initialized
+2024-12-23 16:08:48,441 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 16:08:55,347 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:08:55,877 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:28:04,009 - INFO - Logging initialized
+2024-12-23 16:28:04,009 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 16:28:13,132 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:28:13,811 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:33:45,659 - INFO - Logging initialized
+2024-12-23 16:33:45,660 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 16:33:51,530 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:33:52,221 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:36:56,239 - INFO - Logging initialized
+2024-12-23 16:36:56,240 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 16:37:01,653 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:37:02,195 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:37:14,711 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:37:15,064 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:38:51,129 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:38:51,671 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 16:41:21,502 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 19:16:20,268 - INFO - Logging initialized
+2024-12-23 19:16:20,270 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 19:16:28,906 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 19:16:29,505 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 19:16:43,470 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 19:16:43,917 - INFO - Searching PDFs for customer: 3694388
+2024-12-23 19:20:50,517 - INFO - Logging initialized
+2024-12-23 19:20:50,518 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 19:22:38,836 - INFO - Logging initialized
+2024-12-23 19:22:38,841 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 19:23:56,067 - INFO - Logging initialized
+2024-12-23 19:23:56,068 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 19:24:12,990 - INFO - Logging initialized
+2024-12-23 19:24:12,990 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-23 19:37:04,602 - INFO - Logging initialized
+2024-12-23 19:37:04,602 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-24 13:34:58,905 - INFO - Searching PDFs for customer: 3694388
+2024-12-24 13:35:00,221 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 13:07:37,883 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 13:07:38,465 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 13:08:05,604 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 13:08:06,059 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 13:08:16,128 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 13:08:16,647 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 14:27:57,222 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 14:27:57,789 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 14:47:35,276 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 14:47:35,877 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 14:50:50,870 - INFO - Logging initialized
+2024-12-25 14:50:50,870 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 15:22:57,271 - INFO - Logging initialized
+2024-12-25 15:22:57,271 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 15:54:46,665 - INFO - Logging initialized
+2024-12-25 15:54:46,666 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:07:36,948 - INFO - Logging initialized
+2024-12-25 16:07:36,949 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:08:20,290 - INFO - Logging initialized
+2024-12-25 16:08:20,290 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:08:32,785 - INFO - Logging initialized
+2024-12-25 16:08:32,786 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:12:00,335 - INFO - Logging initialized
+2024-12-25 16:12:00,336 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:13:32,906 - INFO - Logging initialized
+2024-12-25 16:13:32,906 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:22:43,120 - INFO - Logging initialized
+2024-12-25 16:22:43,121 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:26:46,476 - INFO - Logging initialized
+2024-12-25 16:26:46,476 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:28:33,004 - INFO - Logging initialized
+2024-12-25 16:28:33,004 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:34:59,104 - INFO - Logging initialized
+2024-12-25 16:34:59,104 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:39:02,273 - INFO - Logging initialized
+2024-12-25 16:39:02,273 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:41:48,516 - INFO - Logging initialized
+2024-12-25 16:41:48,517 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:44:47,721 - INFO - Logging initialized
+2024-12-25 16:44:47,723 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:48:15,955 - INFO - Logging initialized
+2024-12-25 16:48:15,956 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:49:54,120 - INFO - Logging initialized
+2024-12-25 16:49:54,120 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:52:05,881 - INFO - Logging initialized
+2024-12-25 16:52:05,882 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:54:05,095 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 16:54:05,752 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 16:55:12,595 - INFO - Logging initialized
+2024-12-25 16:55:12,595 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:56:18,498 - INFO - Logging initialized
+2024-12-25 16:56:18,498 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:56:35,118 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 16:56:35,714 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 16:56:41,936 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 16:56:42,531 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 16:57:52,513 - INFO - Logging initialized
+2024-12-25 16:57:52,514 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 16:59:11,376 - INFO - Logging initialized
+2024-12-25 16:59:11,376 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 17:04:57,735 - INFO - Logging initialized
+2024-12-25 17:04:57,736 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 17:05:25,463 - INFO - Logging initialized
+2024-12-25 17:05:25,464 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 18:38:53,424 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 18:38:54,091 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 18:39:20,471 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 18:39:20,930 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 18:41:04,084 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 18:42:46,411 - INFO - Logging initialized
+2024-12-25 18:42:46,412 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 18:42:58,242 - INFO - Logging initialized
+2024-12-25 18:42:58,243 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 18:43:07,474 - INFO - Logging initialized
+2024-12-25 18:43:07,475 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 18:49:48,521 - INFO - Logging initialized
+2024-12-25 18:49:48,521 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 18:50:55,360 - INFO - Logging initialized
+2024-12-25 18:50:55,360 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 18:53:16,541 - INFO - Logging initialized
+2024-12-25 18:53:16,541 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 18:54:46,308 - INFO - Logging initialized
+2024-12-25 18:54:46,309 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:04:19,751 - INFO - Logging initialized
+2024-12-25 19:04:19,752 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:08:05,922 - INFO - Logging initialized
+2024-12-25 19:08:05,922 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:10:08,864 - INFO - Logging initialized
+2024-12-25 19:10:08,864 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:10:49,042 - INFO - Logging initialized
+2024-12-25 19:10:49,042 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:25:59,905 - INFO - Logging initialized
+2024-12-25 19:25:59,906 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:30:27,288 - INFO - Logging initialized
+2024-12-25 19:30:27,288 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:34:08,906 - INFO - Logging initialized
+2024-12-25 19:34:08,906 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:36:26,004 - INFO - Logging initialized
+2024-12-25 19:36:26,004 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:38:09,625 - INFO - Logging initialized
+2024-12-25 19:38:09,626 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:38:29,322 - INFO - Logging initialized
+2024-12-25 19:38:29,322 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:48:16,418 - INFO - Logging initialized
+2024-12-25 19:48:16,419 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:49:06,923 - INFO - Logging initialized
+2024-12-25 19:49:06,923 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:50:51,592 - INFO - Logging initialized
+2024-12-25 19:50:51,592 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:51:33,310 - INFO - Logging initialized
+2024-12-25 19:51:33,311 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:52:27,418 - INFO - Logging initialized
+2024-12-25 19:52:27,418 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 19:56:19,806 - INFO - Logging initialized
+2024-12-25 19:56:19,806 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 20:04:30,704 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 20:04:31,423 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 20:04:43,919 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 20:04:44,692 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 20:05:24,441 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 20:05:24,881 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 20:07:52,916 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 20:07:53,498 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 20:10:20,011 - INFO - Logging initialized
+2024-12-25 20:10:20,012 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 20:10:30,765 - INFO - Logging initialized
+2024-12-25 20:10:30,766 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 20:12:12,581 - INFO - Logging initialized
+2024-12-25 20:12:12,581 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 20:14:13,939 - INFO - Logging initialized
+2024-12-25 20:14:13,940 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-25 20:17:42,650 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 20:17:43,117 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 20:18:29,571 - INFO - Searching PDFs for customer: 3694388
+2024-12-25 20:18:30,265 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 10:42:48,838 - INFO - Logging initialized
+2024-12-27 10:42:48,838 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-27 10:43:48,772 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 10:43:49,365 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 10:44:05,510 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 10:44:06,016 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 14:19:05,502 - INFO - Logging initialized
+2024-12-27 14:19:05,503 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-27 14:26:14,413 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 14:26:15,248 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 14:26:41,232 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 14:26:41,660 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 14:26:59,428 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 14:27:00,159 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 14:27:32,997 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 14:27:35,485 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 14:34:27,659 - INFO - Logging initialized
+2024-12-27 14:34:27,659 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-27 14:36:46,619 - INFO - Logging initialized
+2024-12-27 14:36:46,619 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-27 14:37:20,822 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 14:37:21,282 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 15:05:47,887 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 15:05:48,389 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 15:14:45,214 - INFO - Logging initialized
+2024-12-27 15:14:45,214 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2024-12-27 15:20:32,331 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 15:20:32,882 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 15:20:40,996 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 15:20:41,390 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 15:56:52,164 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 15:56:52,849 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 20:27:24,747 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 20:27:25,614 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 21:32:41,082 - INFO - Searching PDFs for customer: 3694388
+2024-12-27 21:32:41,854 - INFO - Searching PDFs for customer: 3694388
+2024-12-30 09:46:38,485 - INFO - Searching PDFs for customer: 3694388
+2024-12-30 09:46:39,135 - INFO - Searching PDFs for customer: 3694388
+2025-01-01 11:10:52,018 - INFO - Searching PDFs for customer: 3694388
+2025-01-01 11:10:53,250 - INFO - Searching PDFs for customer: 3694388
+2025-01-01 13:03:16,913 - INFO - Searching PDFs for customer: 3694388
+2025-01-01 13:03:17,875 - INFO - Searching PDFs for customer: 3694388
+2025-01-01 14:58:56,443 - INFO - Searching PDFs for customer: 3694388
+2025-01-01 14:59:32,611 - INFO - Searching PDFs for customer: 3694388
+2025-01-01 14:59:33,220 - INFO - Searching PDFs for customer: 3694388
+2025-01-02 14:58:45,924 - INFO - Searching PDFs for customer: 3694388
+2025-01-02 14:58:58,833 - INFO - Searching PDFs for customer: 3694388
+2025-01-02 14:59:10,040 - INFO - Searching PDFs for customer: 3694388
+2025-01-02 14:59:12,193 - INFO - Searching PDFs for customer: 3694388
+2025-01-02 15:11:18,637 - INFO - Logging initialized
+2025-01-02 15:11:18,638 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2025-01-02 17:25:44,138 - INFO - Logging initialized
+2025-01-02 17:25:44,138 - INFO - Using PDF directory: /root/telecom-customer-service/pdf-test
+2025-01-02 17:26:08,325 - INFO - Searching PDFs for customer: 3694388
+2025-01-02 17:26:09,097 - INFO - Searching PDFs for customer: 3694388
+2025-01-02 17:28:10,792 - INFO - Searching PDFs for customer: 3694388
+2025-01-02 17:28:11,352 - INFO - Searching PDFs for customer: 3694388

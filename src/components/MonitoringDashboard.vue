@@ -3,7 +3,9 @@
 import { ref, onMounted } from 'vue'
 import { useSessionStore } from '@/stores/sessionStore'
 import { storeToRefs } from 'pinia'
-import LineChart from './LineChart.vue'  // Add this import
+import LineChart from './LineChart.vue'  
+import { RateLimitMetrics } from '@/types/rate-limit-metrics';
+
 
 const stats = ref([
   { 
