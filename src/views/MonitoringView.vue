@@ -6,7 +6,7 @@ import LineChart from '../components/LineChart.vue'
 import SessionDetailsModal from '../components/SessionDetailsModal.vue'
 import { useSessionStore } from '../stores/sessionStore'
 import { chatService } from '@/services/api'
-
+import { useWebSocket } from '../composables/useWebSocket'
 
 const sessionTime = ref('00:00');
 const sessionStartTime = ref(new Date());
@@ -16,7 +16,8 @@ const SESSION_STORAGE_KEY = 'activeSessions';
 // Router and Store setup
 const router = useRouter()
 const sessionStore = useSessionStore()
-
+const ws = useWebSocket(`ws://localhost:8000/ws/${sessionStore.sessionToken}`)
+const connectionStatus = ws.isConnected
 // Basic state
 const isLoading = ref(false)
 const error = ref(null)
@@ -32,6 +33,10 @@ const selectedSession = ref(null)
 // Session state
 const activeSessions = ref([])
 const hasCleanedUp = ref(false);
+
+const customerId = ref(sessionStore.customerId || '')
+const { isConnected, lastMessage, error: wsError } = useWebSocket(customerId.value) 
+
 
 
 // Chart setup
@@ -378,16 +383,53 @@ const refreshSessions = () => {
   updateSessionData();
 };
 
+const initializeWebSocket = () => {
+    // Close existing connection if any
+    if (ws.value) {
+        ws.value.close()
+        ws.value = null
+    }
+
+    // Create new connection
+    ws.value = new WebSocket(`ws://${window.location.hostname}:8000/ws/${customerId.value}`)
+    
+    ws.value.onopen = () => {
+        console.log('WebSocket connected')
+    }
+
+    ws.value.onclose = () => {
+        console.log('WebSocket closed')
+    }
+
+    ws.value.onmessage = (event) => {
+        try {
+            const data = JSON.parse(event.data)
+            // Update your metrics/charts here
+            updateChartData()
+        } catch (error) {
+            console.error('WebSocket message error:', error)
+        }
+    }
+}
+
 // Lifecycle hooks
 onMounted(async () => {
+  isLoading.value = true
   try {
     console.group('Mounting Monitor Component');
-    isLoading.value = true;
+    
 
     // Start session timer
     startSessionTimer();
+    cleanupSession()
 
+    initializeWebSocket()
+
+    window.addEventListener('beforeunload', () => {
+            if (ws.value) ws.value.close()
+        })
     // Add beforeunload listener
+    window.addEventListener('metrics_update', handleMetricsUpdate)
     window.addEventListener('beforeunload', cleanupSession);
     
     // Add visibility change listener to handle tab close
@@ -398,11 +440,10 @@ onMounted(async () => {
     });
 
     // Initial data load and setup remaining intervals
-    await updateSessionData();
+    await updateSessionData()
     
-    const updateInterval = setInterval(() => {
-      updateSessionData();
-    }, 3000);
+    const updateInterval = setInterval(updateSessionData, 3000)
+    intervals.value.push(updateInterval)
 
     intervals.value.push(updateInterval);
 
@@ -451,6 +492,18 @@ const debugSessionCount = () => {
 
 onUnmounted(() => {
   try {
+
+    const sessions = JSON.parse(localStorage.getItem('activeSessions') || '[]')
+    const currentSession = sessions.find(s => s.id === sessionStore.sessionToken)
+    if (currentSession) {
+      const updatedSessions = sessions.filter(s => s.id !== sessionStore.sessionToken)
+       localStorage.setItem('activeSessions', JSON.stringify(updatedSessions))
+    }
+    if (ws.value) {
+            ws.value.close()
+            ws.value = null
+        }
+        
     // Clean up session
     cleanupSession();
     
@@ -529,6 +582,51 @@ watch([() => sessionStore.sessionToken, () => sessionStore.customerId],
   }, { immediate: true }
 );
 
+watch(isConnected, (connected) => {
+    console.log('WebSocket connection status:', connected)
+    if (!connected) {
+        error.value = 'Lost connection to real-time updates'
+    } else {
+        error.value = null
+    }
+});
+
+watch(lastMessage, (newMessage) => {
+  if (!newMessage) return
+
+  try {
+    if (newMessage.type === 'metrics_update') {
+      // Update stats
+      const metricsData = newMessage.data
+      stats.value = [
+        {
+          label: 'Active Sessions',
+          value: metricsData.rate_limit_metrics.queue_length.toString(),
+          icon: 'fa-users',
+          iconClass: metricsData.rate_limit_metrics.queue_length > 0 ? 'text-green-500' : 'text-gray-500'
+        },
+        {
+          label: 'Session Time',
+          value: sessionTime.value,
+          icon: 'fa-clock',
+          iconClass: 'text-blue-500'
+        },
+        {
+          label: 'API Usage',
+          value: `${metricsData.token_usage.used}/${metricsData.token_usage.remaining}`,
+          icon: 'fa-chart-line',
+          iconClass: 'text-purple-500'
+        }
+      ]
+
+      // Update chart data
+      updateChartData()
+    }
+  } catch (e) {
+    error.value = 'Error processing WebSocket message'
+  }
+});
+
 </script>
 
 <template>
@@ -543,17 +641,34 @@ watch([() => sessionStore.sessionToken, () => sessionStore.customerId],
           <div class="text-sm">
             <strong>Last Update:</strong> {{ new Date().toLocaleTimeString() }}
           </div>
+          <div v-if="!ws.isConnected" class="text-sm text-red-500 flex items-center">        <span class="text-red-500">⚠️ Disconnected from real-time updates</span>
+            <span class="mr-2">⚠️</span>
+            <span>Disconnected from real-time updates</span>
+          </div>
         </div>
+        <div class="flex space-x-2">
+      <button 
+        v-if="!ws.isConnected"
+        @click="ws.connect"
+        class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+      >
+        Reconnect
+      </button>
         <button 
           @click="refreshSessions"
           class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
           Refresh Sessions
         </button>
+        </div>
       </div>
     </div>
 
     <!-- Error Display -->
+    <div v-if="lastError" class="bg-red-50 px-4 py-2 text-sm">
+    <span class="text-red-600">{{ lastError }}</span>
+  </div>
+  
     <div v-if="error" class="bg-red-50 p-4 border-l-4 border-red-500">
       <div class="flex">
         <div class="flex-shrink-0">

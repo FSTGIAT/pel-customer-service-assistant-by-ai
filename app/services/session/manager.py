@@ -15,6 +15,21 @@ class SessionManager:
             db=1,
             decode_responses=True
         )
+
+
+    async def check_health(self) -> bool:
+        try:
+            return self.redis.ping()
+        except:
+            return False
+
+    # Add this new method
+    async def close(self):
+        """Close Redis connection"""
+        try:
+            self.redis.close()
+        except Exception as e:
+            logger.error(f"Error closing Redis connection: {e}")
         
     async def create_session(self, customer_id: str) -> dict:
         try:

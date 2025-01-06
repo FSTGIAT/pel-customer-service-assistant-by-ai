@@ -1,35 +1,92 @@
 # app/core/database.py
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-from app.core.config import settings
-import cx_Oracle
+from contextlib import asynccontextmanager
+import logging
+from typing import AsyncGenerator, Any 
+import asyncpg
+from fastapi import FastAPI
+from app.core.config import settings  # You'll need to create this
 
-# Oracle connection string
-ORACLE_URL = f"oracle://{settings.ORACLE_USER}:{settings.ORACLE_PASSWORD}@{settings.ORACLE_DSN}"
+logger = logging.getLogger(__name__)
 
-# Create engine with connection pooling
-engine = create_engine(
-    ORACLE_URL,
-    max_identifier_length=128,
-    pool_size=settings.ORACLE_POOL_SIZE,
-    max_overflow=settings.ORACLE_MAX_OVERFLOW
-)
+class DatabaseManager:
+    def __init__(self):
+        self.pool = None
+        self._config = {
+            'host': settings.DB_HOST,
+            'port': settings.DB_PORT,
+            'user': settings.DB_USER,
+            'password': settings.DB_PASSWORD,
+            'database': settings.DB_NAME,
+            'min_size': settings.DB_POOL_MIN_SIZE,
+            'max_size': settings.DB_POOL_MAX_SIZE,
+        }
+        logger.info(f"Initializing DatabaseManager with host: {settings.DB_HOST}")
 
-# SessionLocal class for database sessions
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Base class for database models
-Base = declarative_base()
+    async def connect(self) -> None:
+        """Initialize database connection pool"""
+        try:
+            self.pool = await asyncpg.create_pool(**self._config)
+            logger.info("Database connection pool created")
+            
+            # Test connection
+            async with self.pool.acquire() as conn:
+                version = await conn.fetchval('SELECT version()')
+                logger.info(f"Connected to PostgreSQL: {version}")
+                
+        except Exception as e:
+            logger.error(f"Failed to create database pool: {str(e)}")
+            raise
 
-# Database dependency
-def get_db():
-    """
-    Database session dependency.
-    Use this as a FastAPI dependency for routes that need database access.
-    """
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+    async def disconnect(self) -> None:
+        """Close database connection pool"""
+        if self.pool:
+            await self.pool.close()
+            logger.info("Database connection pool closed")
+
+    @asynccontextmanager
+    async def connection(self) -> AsyncGenerator[asyncpg.Connection, None]:
+        """Get a database connection from the pool"""
+        if not self.pool:
+            raise RuntimeError("Database not initialized")
+            
+        async with self.pool.acquire() as conn:
+            try:
+                yield conn
+            except Exception as e:
+                await conn.execute('ROLLBACK')
+                logger.error(f"Database error: {str(e)}")
+                raise
+
+    async def fetch_one(self, query: str, *args) -> dict:
+        """Fetch a single row"""
+        async with self.connection() as conn:
+            row = await conn.fetchrow(query, *args)
+            return dict(row) if row else None
+
+    async def fetch_all(self, query: str, *args) -> list:
+        """Fetch multiple rows"""
+        async with self.connection() as conn:
+            rows = await conn.fetch(query, *args)
+            return [dict(row) for row in rows]
+
+    async def fetch_val(self, query: str, *args) -> Any:
+        """Fetch a single value"""
+        async with self.connection() as conn:
+            return await conn.fetchval(query, *args)
+            
+    async def execute(self, query: str, *args) -> str:
+        """Execute a query"""
+        async with self.connection() as conn:
+            return await conn.execute(query, *args)
+
+            
+# Global instance
+db = DatabaseManager()
+
+# FastAPI lifecycle events
+async def connect_to_db(app: FastAPI) -> None:
+    await db.connect()
+
+async def close_db_connection(app: FastAPI) -> None:
+    await db.disconnect()
